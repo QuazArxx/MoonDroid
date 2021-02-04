@@ -28,7 +28,8 @@ client.on('guildMemberAdd', member => {
     .setColor(colors.green)
     .setTitle(`Welcome **${member.user.username}** to Planet Q! Feel to take a look around and enjoy many of our exotic cuisines!`)
 
-	member.guild.channels.cache.get('806961672329232475').send(embed);
+    member.guild.channels.cache.get('806961672329232475').send(embed);
+    member.roles.add('806939240755626005');
 });
 
 client.on('message', async message => {
