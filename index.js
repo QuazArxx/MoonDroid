@@ -3,6 +3,7 @@ const { prefix, token } = require('./config.json');
 const fs = require('fs');
 
 const colors = require('./colors.json');
+const functions = require('./functions.js');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
