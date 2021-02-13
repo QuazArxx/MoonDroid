@@ -19,6 +19,11 @@ module.exports = {
         .setThumbnail('https://w7.pngwing.com/pngs/72/540/png-transparent-no-symbol-sign-sign-stop-miscellaneous-angle-text-thumbnail.png')
         .setTitle('Submission must be a YouTube link.')
 
+        const submission = new Discord.MessageEmbed()
+        .setColor(colors.green)
+        .setTitle(`${message.author.user.username} submitted a link!`)
+        .addField(args[1])
+
         if (!args[1]) {
             message.delete();
             return message.channel.send(error1);
