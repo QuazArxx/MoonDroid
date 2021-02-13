@@ -21,8 +21,8 @@ module.exports = {
 
         const submission = new Discord.MessageEmbed()
         .setColor(colors.green)
-        .setTitle(`${message.author.user.username} submitted a link!`)
-        .addField(args[1])
+        .setTitle(`${message.author.username} submitted a link!`)
+        .addField(args[1], '\u200B')
 
         if (!args[1]) {
             message.delete();
@@ -30,6 +30,10 @@ module.exports = {
         } else if (!(args[1].startsWith('https')) || !message.content.includes('youtube')) {
             message.delete();
             return message.channel.send(error2);
-        } else message.channel.send('Submission sent successfully!')
+        } else {
+            message.delete();
+            message.guild.channels.cache.get('810157789174825059').send(submission);
+            message.channel.send('Submission sent successfully!');
+        }
     }
 }
