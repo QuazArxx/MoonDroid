@@ -27,7 +27,7 @@ module.exports = {
         if (!args[1]) {
             message.delete();
             return message.channel.send(error1);
-        } else if (!(args[1].startsWith('https')) || !message.content.includes('youtube')) {
+        } else if (!(args[1].startsWith('https')) && (!message.content.includes('youtube.com') || !message.content.includes('youtu.be'))) {
             message.delete();
             return message.channel.send(error2);
         } else message.channel.send('Submission sent successfully!')
