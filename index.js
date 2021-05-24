@@ -23,29 +23,20 @@ client.once('ready', () => {
     console.log('Ready!');
 });
 
-/*client.on('presenceUpdate', (oldPresence, newPresence) => {
+client.on('presenceUpdate', (oldPresence, newPresence) => {
     let oldGame = null;
-    
-    const guild = client.guilds.cache.get('614134721533968484');
-	const streamingRole = guild.roles.cache.find(role => role.id === '720050658149138444');
     
     if (oldPresence) oldGame = oldPresence.activities.find(activity => activity.type === 'STREAMING') ? true : false;
     const newGame = newPresence.activities.find(activity => activity.type === 'STREAMING') ? true : false;
 	  
-	if (newPresence.user.bot) return;
+	if (newPresence.user.bot || !(newPresence.user.id == '387959359394807808')) return;
 
-    if (newPresence.guild == guild) {
-	    if (!oldGame && newGame) {         // Started playing.
-	    newPresence.member.roles.add(streamingRole)
-		    .then(() => console.log(`${streamingRole.name} added to ${newPresence.user.tag}.`))
-		    .catch(console.error);
-	    } else if (oldGame && !newGame) {  // Stopped playing.
-	    newPresence.member.roles.remove(streamingRole)
-		    .then(() => console.log(`${streamingRole.name} removed from ${newPresence.user.tag}.`))
-		    .catch(console.error);
-        }
+    if (!oldGame && newGame) {         // Started playing.
+        newPresence.guild.channels.cache.get('806938202719649863').send('QuazArxx is live! Check out the stream at https://twitch.tv/quazarxx!')
+    } else if (oldGame && !newGame) {  // Stopped playing.
+        message.delete()
     }
-});*/
+});
 
 // Welcomes new members into the server
 client.on('guildMemberAdd', member => {
