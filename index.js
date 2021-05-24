@@ -41,7 +41,7 @@ client.on('presenceUpdate', (oldPresence, newPresence) => {
 // Welcomes new members into the server
 client.on('guildMemberAdd', member => {
     const embed = new Discord.MessageEmbed()
-    .setColor(colors.green)
+    .setColor(colors.black)
     .setTitle(`Welcome **${member.user.username}** to Planet Q! Feel to take a look around and enjoy many of our exotic cuisines!`)
 
     member.guild.channels.cache.get('806961672329232475').send(embed);
