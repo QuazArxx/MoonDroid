@@ -23,31 +23,6 @@ client.once('ready', () => {
     console.log('Ready!');
 });
 
-client.on('presenceUpdate', (oldPresence, newPresence) => {
-    let oldGame = null;
-    
-    if (oldPresence) oldGame = oldPresence.activities.find(activity => activity.type === 'STREAMING') ? true : false;
-    const newGame = newPresence.activities.find(activity => activity.type === 'STREAMING') ? true : false;
-	  
-	if (newPresence.user.bot || !(newPresence.user.id == '387959359394807808')) return;
-
-    if (!oldGame && newGame) {         // Started playing.
-        newPresence.guild.channels.cache.get('806938202719649863').send('QuazArxx is live! Check out the stream at https://twitch.tv/quazarxx!')
-    } else if (oldGame && !newGame) {  // Stopped playing.
-        message.delete()
-    }
-});
-
-// Welcomes new members into the server
-client.on('guildMemberAdd', member => {
-    const embed = new Discord.MessageEmbed()
-    .setColor(colors.black)
-    .setTitle(`Welcome **${member.user.username}** to Planet Q! Feel to take a look around and enjoy many of our exotic cuisines!`)
-
-    member.guild.channels.cache.get('806961672329232475').send(embed);
-    member.roles.add('806939240755626005');
-});
-
 client.on('message', async message => {
 
     if (!message.content.startsWith(prefix) || message.author.bot) return;
