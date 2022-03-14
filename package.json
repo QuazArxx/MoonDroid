@@ -3,11 +3,6 @@
   "version": "0.0.1",
   "description": "Discord bot for QuazArxx Twitch server",
   "main": "index.js",
-  "dependencies": {
-    "canvas": "^2.6.1",
-    "discord.js": "^12.5.1"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/QuazArxx/Galactic-Bot/issues"
   },
-  "homepage": "https://github.com/QuazArxx/Galactic-Bot#readme"
+  "homepage": "https://github.com/QuazArxx/Galactic-Bot#readme",
+  "dependencies": {
+    "discord.js": "^13.0.1"
+  }
 }
