@@ -1,9 +1,19 @@
 const Discord = require('discord.js');
+const CronJob = require('cron').CronJob
 const { prefix, token } = require('./config.json');
 const fs = require('fs');
 
 const colors = require('./colors.json');
 const functions = require('./functions.js');
+
+let raidTime = new CronJob('0 45 20 * * 1', 
+    function() {
+        console.log('My message')
+    },
+    null,
+    true,
+    'America/New_York'
+)
 
 const discordIntents = new Discord.Intents()
 discordIntents.add(
@@ -16,7 +26,7 @@ discordIntents.add(
     Discord.Intents.FLAGS.GUILD_VOICE_STATES
 )
 
-const client = new Discord.Client();
+const client = new Discord.Client({intents: [discordIntents]});
 client.commands = new Discord.Collection();
 
 const folders = fs.readdirSync('./commands'); // read the directory of folders
@@ -54,4 +64,5 @@ client.on('message', async message => {
 	    message.reply('there was an error trying to execute that command!');
     }
 });
+
 client.login(token);
