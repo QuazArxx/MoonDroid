@@ -6,7 +6,9 @@ const fs = require('fs');
 const colors = require('./colors.json');
 const functions = require('./functions.js');
 
-let raidTime = new CronJob('0 45 20 * * 1', 
+const DiabloEvents = require('./DiabloEvents.json')
+const string = "* * * * * *"
+let raidTime = new CronJob(string, 
     function() {
         console.log('My message')
     },

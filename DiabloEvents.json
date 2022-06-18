@@ -1,0 +1,50 @@
+[
+    {
+        "day": "Monday",
+        "location": "Realm of Damnation",
+        "numberOfEvents": 3,
+        "eventNames": ["Demon Gates", "Demon Gates", "Demon Gates"]
+    },
+
+    {
+        "day": "Tuesday",
+        "location": "Ashworld Cemetery",
+        "numberOfEvents": 4,
+        "eventNames": ["Haunted Carriage", "Haunted Carriage", "Ancient Arena - BILEFEN [PvP]", "Haunted Carriage"]
+    },
+
+    {
+        "day": "Wednesday",
+        "location": "Mount Zavain",
+        "numberOfEvents": 3,
+        "eventNames": ["Ancient Nightmare", "Ancient Nightmare", "Ancient Nightmare"]
+    },
+
+    {
+        "day": "Thursday",
+        "location": "Realm of Damnation",
+        "numberOfEvents": 4,
+        "eventNames": ["Demon Gates", "Demon Gates", "Ancient Arena - BILEFEN [PvP]", "Demon Gates"]
+    },
+
+    {
+        "day": "Friday",
+        "location": "Mount Zavain",
+        "numberOfEvents": 3,
+        "eventNames": ["Ancient Nightmare", "Ancient Nightmare", "Ancient Nightmare"]
+    },
+
+    {
+        "day": "Saturday",
+        "location": "Ashworld Cemetery",
+        "numberOfEvents": 4,
+        "eventNames": ["Haunted Carriage", "Haunted Carriage", "Ancient Arena - BILEFEN [PvP]", "Haunted Carriage"]
+    },
+
+    {
+        "day": "Sunday",
+        "location": "Realm of Damnation",
+        "numberOfEvents": 4,
+        "eventNames": ["Demon Gates", "Demon Gates", "Ancient Arena - BILEFEN [PvP]", "Demon Gates"]
+    }
+]
