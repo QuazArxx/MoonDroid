@@ -6,9 +6,29 @@ const fs = require('fs');
 const colors = require('./colors.json');
 const functions = require('./functions.js');
 
+// Announces events 5 minutes prior
 const DiabloEvents = require('./DiabloEvents.json')
-const string = "* * * * * *"
-let raidTime = new CronJob(string, 
+
+let timesArray = []
+let timesArrayIndex = 0
+
+let dayIndex = 0
+
+let currentDayOfWeek = new Date().getDay()
+
+while (!(dayIndex == currentDayOfWeek)) {
+    dayIndex++
+}
+
+let previousDayOfWeek = DiabloEvents[dayIndex].day
+
+if (DiabloEvents[dayIndex].numberOfEvents == 3) {
+    timesArray = ["* * 12 * * *", "* 30 20 * * *", "* * 22 * * *"]
+} else {
+    timesArray = ["* * 12 * * *", "* 30 20 * * *", "* 30 21 * * *", "* * 22 * * *"]
+}
+
+let raidTime = new CronJob(timesArray[timesArrayIndex], 
     function() {
         console.log('My message')
     },
@@ -17,6 +37,20 @@ let raidTime = new CronJob(string,
     'America/New_York'
 )
 
+// checks if the day and time are at the final event of the week and resets both for the next week.
+    // Otherwise checks if it's the final event of the day and resets
+    // Otherwise changes index to next event
+if (dayIndex == 6 && timesArray.length - 1 == timesArrayIndex) {
+    dayIndex = 0
+    timesArrayIndex = 0
+} else if (dayIndex < 6 && timesArray.length - 1 == timesArrayIndex) {
+    dayIndex++
+    timesArrayIndex = 0
+} else {
+
+}
+
+// Sets Discord Intents
 const discordIntents = new Discord.Intents()
 discordIntents.add(
     Discord.Intents.FLAGS.GUILDS,
@@ -46,7 +80,7 @@ client.once('ready', () => {
     console.log('Ready!');
 });
 
-client.on('message', async message => {
+client.on('messageCreate', async message => {
 
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 

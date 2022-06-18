@@ -1,5 +1,12 @@
 [
     {
+        "day": "Sunday",
+        "location": "Realm of Damnation",
+        "numberOfEvents": 4,
+        "eventNames": ["Demon Gates", "Demon Gates", "Ancient Arena - BILEFEN [PvP]", "Demon Gates"]
+    },
+
+    {
         "day": "Monday",
         "location": "Realm of Damnation",
         "numberOfEvents": 3,
@@ -39,12 +46,5 @@
         "location": "Ashworld Cemetery",
         "numberOfEvents": 4,
         "eventNames": ["Haunted Carriage", "Haunted Carriage", "Ancient Arena - BILEFEN [PvP]", "Haunted Carriage"]
-    },
-
-    {
-        "day": "Sunday",
-        "location": "Realm of Damnation",
-        "numberOfEvents": 4,
-        "eventNames": ["Demon Gates", "Demon Gates", "Ancient Arena - BILEFEN [PvP]", "Demon Gates"]
     }
 ]
