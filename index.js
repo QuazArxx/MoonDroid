@@ -6,50 +6,6 @@ const fs = require('fs');
 const colors = require('./colors.json');
 const functions = require('./functions.js');
 
-// Announces events 5 minutes prior
-const DiabloEvents = require('./DiabloEvents.json')
-
-let timesArray = []
-let timesArrayIndex = 0
-
-let dayIndex = 0
-
-let currentDayOfWeek = new Date().getDay()
-
-while (!(dayIndex == currentDayOfWeek)) {
-    dayIndex++
-}
-
-let previousDayOfWeek = DiabloEvents[dayIndex].day
-
-if (DiabloEvents[dayIndex].numberOfEvents == 3) {
-    timesArray = ["* * 12 * * *", "* 30 20 * * *", "* * 22 * * *"]
-} else {
-    timesArray = ["* * 12 * * *", "* 30 20 * * *", "* 30 21 * * *", "* * 22 * * *"]
-}
-
-let raidTime = new CronJob(timesArray[timesArrayIndex], 
-    function() {
-        console.log('My message')
-    },
-    null,
-    true,
-    'America/New_York'
-)
-
-// checks if the day and time are at the final event of the week and resets both for the next week.
-    // Otherwise checks if it's the final event of the day and resets
-    // Otherwise changes index to next event
-if (dayIndex == 6 && timesArray.length - 1 == timesArrayIndex) {
-    dayIndex = 0
-    timesArrayIndex = 0
-} else if (dayIndex < 6 && timesArray.length - 1 == timesArrayIndex) {
-    dayIndex++
-    timesArrayIndex = 0
-} else {
-
-}
-
 // Sets Discord Intents
 const discordIntents = new Discord.Intents()
 discordIntents.add(
@@ -79,6 +35,78 @@ for (var folder of folders) {
 client.once('ready', () => {
     console.log('Ready!');
 });
+
+// Announces Raid time every Monday at 8:55pm
+const raidEmbed = new Discord.MessageEmbed()
+.setColor('#992D22')
+.setTitle('Dear Mystic Moon Clan, the blood moon is rising and its time to fight Lassal!  Lets get together and RAIIID.')
+
+let raidTime = new CronJob('0 55 20 * * 1', 
+    function() {
+        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
+        client.channels.cache.get('982389292619923456').send({embeds: [raidEmbed]})
+    },
+    null,
+    true,
+    'America/New_York'
+)
+
+// Announces Bilefen PVP time on designated days
+const bilefenEmbed = new Discord.MessageEmbed()
+.setColor('#992D22')
+.setTitle('Ancient Arena [PVP] in Bilefen starts in 5 minutes!')
+
+let bilefenEvent = new CronJob('0 25 21 * * 0,2,4,6',
+    function() {
+        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
+        client.channels.cache.get('982389292619923456').send({embeds: [bilefenEmbed]})
+    },
+    null,
+    true,
+    'America/New_York'
+)
+
+// Announces events 5 minutes prior
+const DiabloEvents = require('./DiabloEvents.json')
+
+let timesArray = ["0 55 11 * * *", "0 25 20 * * *", "0 55 21 * * *"]
+let timesArrayIndex = 2
+
+let dayIndex = 0
+
+let currentDayOfWeek = new Date().getDay()
+
+while (!(dayIndex == currentDayOfWeek)) {
+    dayIndex++
+}
+
+let eventName = DiabloEvents[dayIndex].eventNames[timesArrayIndex]
+let eventLocation = DiabloEvents[dayIndex].location
+
+const eventEmbed = new Discord.MessageEmbed()
+.setColor('#992D22')
+.setTitle(`${eventName} in ${eventLocation} starts in 5 minutes!`)
+
+let eventTime = new CronJob(timesArray[timesArrayIndex], 
+    function() {
+        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
+        client.channels.cache.get('982389292619923456').send({embeds: [eventEmbed]})
+    },
+    null,
+    true,
+    'America/New_York'
+)
+
+// checks if the day and time are at the final event of the week and resets both for the next week.
+    // Otherwise checks if it's the final event of the day and resets
+if (dayIndex == 6 && timesArray.length - 1 == timesArrayIndex) {
+    dayIndex = 0
+    timesArrayIndex = 0
+} else if (dayIndex < 6 && timesArray.length - 1 == timesArrayIndex) {
+    timesArrayIndex = 0
+} else {
+    timesArrayIndex++
+}
 
 client.on('messageCreate', async message => {
 
