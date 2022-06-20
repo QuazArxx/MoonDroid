@@ -70,7 +70,7 @@ let bilefenEvent = new CronJob('0 25 21 * * 0,2,4,6',
 const DiabloEvents = require('./DiabloEvents.json')
 
 let timesArray = ["0 55 11 * * *", "0 25 20 * * *", "0 55 21 * * *"]
-let timesArrayIndex = 2
+let timesArrayIndex = 0
 
 let dayIndex = 0
 
