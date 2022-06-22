@@ -2,7 +2,7 @@
     {
         "day": "Sunday",
         "location": "Realm of Damnation",
-        "numberOfEvents": 4,
+        "numberOfEvents": 3,
         "eventNames": ["Demon Gates", "Demon Gates", "Demon Gates"]
     },
 
@@ -16,7 +16,7 @@
     {
         "day": "Tuesday",
         "location": "Ashworld Cemetery",
-        "numberOfEvents": 4,
+        "numberOfEvents": 3,
         "eventNames": ["Haunted Carriage", "Haunted Carriage", "Haunted Carriage"]
     },
 
@@ -30,7 +30,7 @@
     {
         "day": "Thursday",
         "location": "Realm of Damnation",
-        "numberOfEvents": 4,
+        "numberOfEvents": 3,
         "eventNames": ["Demon Gates", "Demon Gates", "Demon Gates"]
     },
 
@@ -44,7 +44,7 @@
     {
         "day": "Saturday",
         "location": "Ashworld Cemetery",
-        "numberOfEvents": 4,
+        "numberOfEvents": 3,
         "eventNames": ["Haunted Carriage", "Haunted Carriage", "Haunted Carriage"]
     }
 ]

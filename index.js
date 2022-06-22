@@ -6,6 +6,8 @@ const fs = require('fs');
 const colors = require('./colors.json');
 const functions = require('./functions.js');
 
+let daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
 // Sets Discord Intents
 const discordIntents = new Discord.Intents()
 discordIntents.add(
@@ -54,7 +56,7 @@ let raidTime = new CronJob('0 55 20 * * 1',
 // Announces Bilefen PVP time on designated days
 const bilefenEmbed = new Discord.MessageEmbed()
 .setColor('#992D22')
-.setTitle('Ancient Arena [PVP] in Bilefen starts in 5 minutes!')
+.setTitle('Ancient Arena [PvP] in Bilefen starts in 5 minutes!')
 
 let bilefenEvent = new CronJob('0 25 21 * * 0,2,4,6',
     function() {
@@ -109,6 +111,14 @@ if (dayIndex == 6 && timesArray.length - 1 == timesArrayIndex) {
 }
 
 client.on('messageCreate', async message => {
+
+    if (message.content.toLowerCase() == 'dayindex') {
+        message.channel.send(`${daysOfTheWeek[dayIndex]}`)
+    }
+
+    if (message.content.toLowerCase() == 'currentday') {
+        message.channel.send(`${daysOfTheWeek[currentDayOfWeek]}`)
+    }
 
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
