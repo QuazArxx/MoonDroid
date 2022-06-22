@@ -74,9 +74,9 @@ const DiabloEvents = require('./DiabloEvents.json')
 let timesArray = ["0 55 11 * * *", "0 25 20 * * *", "0 55 21 * * *"]
 let timesArrayIndex = 0
 
-let currentDayOfWeek
+let currentDayOfWeek = new Date().getDay()
 
-let dailyReset = new CronJob('0 0 0 * * *',
+let dailyReset = new CronJob('5 0 0 * * *',
     function() {
         currentDayOfWeek = new Date().getDay()
         timesArrayIndex = 0
