@@ -74,16 +74,20 @@ const DiabloEvents = require('./DiabloEvents.json')
 let timesArray = ["0 55 11 * * *", "0 25 20 * * *", "0 55 21 * * *"]
 let timesArrayIndex = 0
 
-let dayIndex = 0
+let currentDayOfWeek
 
-let currentDayOfWeek = new Date().getDay()
+let dailyReset = new CronJob('0 0 0 * * *',
+    function() {
+        currentDayOfWeek = new Date().getDay()
+        timesArrayIndex = 0
+    },
+    null,
+    true,
+    'America/New_York'
+)
 
-while (!(dayIndex == currentDayOfWeek)) {
-    dayIndex++
-}
-
-let eventName = DiabloEvents[dayIndex].eventNames[timesArrayIndex]
-let eventLocation = DiabloEvents[dayIndex].location
+let eventName = DiabloEvents[currentDayOfWeek].eventNames[timesArrayIndex]
+let eventLocation = DiabloEvents[currentDayOfWeek].location
 
 const eventEmbed = new Discord.MessageEmbed()
 .setColor('#992D22')
@@ -93,28 +97,15 @@ let eventTime = new CronJob(timesArray[timesArrayIndex],
     function() {
         client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
         client.channels.cache.get('982389292619923456').send({embeds: [eventEmbed]})
+
+        timesArrayIndex++
     },
     null,
     true,
     'America/New_York'
 )
 
-// checks if the day and time are at the final event of the week and resets both for the next week.
-    // Otherwise checks if it's the final event of the day and resets
-if (dayIndex == 6 && timesArray.length - 1 == timesArrayIndex) {
-    dayIndex = 0
-    timesArrayIndex = 0
-} else if (dayIndex < 6 && timesArray.length - 1 == timesArrayIndex) {
-    timesArrayIndex = 0
-} else {
-    timesArrayIndex++
-}
-
 client.on('messageCreate', async message => {
-
-    if (message.content.toLowerCase() == 'dayindex') {
-        message.channel.send(`${daysOfTheWeek[dayIndex]}`)
-    }
 
     if (message.content.toLowerCase() == 'currentday') {
         message.channel.send(`${daysOfTheWeek[currentDayOfWeek]}`)
