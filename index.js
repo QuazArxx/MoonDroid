@@ -111,6 +111,14 @@ client.on('messageCreate', async message => {
         message.channel.send(`${daysOfTheWeek[currentDayOfWeek]}`)
     }
 
+    if (message.content.toLowerCase() == 'dayarray') {
+        message.channel.send(`${DiabloEvents[currentDayOfWeek].day}`)
+    }
+
+    if (message.content.toLowerCase() == 'timesarray') {
+        message.channel.send(`${timesArrayIndex}`)
+    }
+
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).trim().split(' ');
