@@ -68,37 +68,44 @@ let bilefenEvent = new CronJob('0 25 21 * * 0,2,4,6',
     'America/New_York'
 )
 
-// Announces events 5 minutes prior
-const DiabloEvents = require('./DiabloEvents.json')
+const demonGateEmbed = new Discord.MessageEmbed()
+.setColor('#992D22')
+.setTitle(`Demon Gates in Realm of Damnation starts in 5 minutes!`)
 
-let timesArray = ["0 55 11 * * *", "0 25 20 * * *", "0 55 21 * * *"]
-let timesArrayIndex = 0
-
-let currentDayOfWeek = new Date().getDay()
-
-let dailyReset = new CronJob('5 0 0 * * *',
+let demonGates = new CronJob("0,0,0 55,25,55 11,20,21 * * 0,1,4", 
     function() {
-        currentDayOfWeek = new Date().getDay()
-        timesArrayIndex = 0
+        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
+        client.channels.cache.get('982389292619923456').send({embeds: [demonGateEmbed]})
     },
     null,
     true,
     'America/New_York'
 )
 
-let eventName = DiabloEvents[currentDayOfWeek].eventNames[timesArrayIndex]
-let eventLocation = DiabloEvents[currentDayOfWeek].location
 
-const eventEmbed = new Discord.MessageEmbed()
+const hauntedCarriageEmbed = new Discord.MessageEmbed()
 .setColor('#992D22')
-.setTitle(`${eventName} in ${eventLocation} starts in 5 minutes!`)
+.setTitle(`Haunted Carriage in Ashwold Cemetary starts in 5 minutes!`)
 
-let eventTime = new CronJob(timesArray[timesArrayIndex], 
+let hauntedCarriage = new CronJob("0,0,0 55,25,55 11,20,21 * * 2,6", 
     function() {
         client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
-        client.channels.cache.get('982389292619923456').send({embeds: [eventEmbed]})
+        client.channels.cache.get('982389292619923456').send({embeds: [hauntedCarriageEmbed]})
+    },
+    null,
+    true,
+    'America/New_York'
+)
 
-        timesArrayIndex++
+
+const ancientNightmareEmbed = new Discord.MessageEmbed()
+.setColor('#992D22')
+.setTitle(`Ancient Nightmare in Mount Zavain starts in 5 minutes!`)
+
+let ancientNightmare = new CronJob("0,0,0 55,25,55 11,20,21 * * 3,5", 
+    function() {
+        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
+        client.channels.cache.get('982389292619923456').send({embeds: [ancientNightmareEmbed]})
     },
     null,
     true,
