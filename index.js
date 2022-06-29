@@ -72,7 +72,7 @@ const demonGateEmbed = new Discord.MessageEmbed()
 .setColor('#992D22')
 .setTitle(`Demon Gates in Realm of Damnation starts in 5 minutes!`)
 
-let demonGates = new CronJob("0,0,0 55,25,55 11,20,21 * * 0,1,4", 
+let demonGates1 = new CronJob("0 55 11,21 * * 0,1,4", 
     function() {
         client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
         client.channels.cache.get('982389292619923456').send({embeds: [demonGateEmbed]})
@@ -82,12 +82,31 @@ let demonGates = new CronJob("0,0,0 55,25,55 11,20,21 * * 0,1,4",
     'America/New_York'
 )
 
+let demonGates2 = new CronJob("0 25 20 * * 0,1,4", 
+    function() {
+        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
+        client.channels.cache.get('982389292619923456').send({embeds: [demonGateEmbed]})
+    },
+    null,
+    true,
+    'America/New_York'
+)
 
 const hauntedCarriageEmbed = new Discord.MessageEmbed()
 .setColor('#992D22')
 .setTitle(`Haunted Carriage in Ashwold Cemetary starts in 5 minutes!`)
 
-let hauntedCarriage = new CronJob("0,0,0 55,25,55 11,20,21 * * 2,6", 
+let hauntedCarriage1 = new CronJob("0 55 11,21 * * 2,6", 
+    function() {
+        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
+        client.channels.cache.get('982389292619923456').send({embeds: [hauntedCarriageEmbed]})
+    },
+    null,
+    true,
+    'America/New_York'
+)
+
+let hauntedCarriage2 = new CronJob("0 25 20 * * 2,6", 
     function() {
         client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
         client.channels.cache.get('982389292619923456').send({embeds: [hauntedCarriageEmbed]})
@@ -102,7 +121,17 @@ const ancientNightmareEmbed = new Discord.MessageEmbed()
 .setColor('#992D22')
 .setTitle(`Ancient Nightmare in Mount Zavain starts in 5 minutes!`)
 
-let ancientNightmare = new CronJob("0,0,0 55,25,55 11,20,21 * * 3,5", 
+let ancientNightmare1 = new CronJob("0 55 11,21 * * 3,5", 
+    function() {
+        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
+        client.channels.cache.get('982389292619923456').send({embeds: [ancientNightmareEmbed]})
+    },
+    null,
+    true,
+    'America/New_York'
+)
+
+let ancientNightmare2 = new CronJob("0 25 20 * * 3,5", 
     function() {
         client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
         client.channels.cache.get('982389292619923456').send({embeds: [ancientNightmareEmbed]})
