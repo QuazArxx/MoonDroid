@@ -3,48 +3,48 @@
         "day": "Sunday",
         "location": "Realm of Damnation",
         "numberOfEvents": 3,
-        "eventNames": ["Demon Gates", "Demon Gates", "Demon Gates"]
+        "eventName": "Demon Gates"
     },
 
     {
         "day": "Monday",
         "location": "Realm of Damnation",
         "numberOfEvents": 3,
-        "eventNames": ["Demon Gates", "Demon Gates", "Demon Gates"]
+        "eventName": "Demon Gates"
     },
 
     {
         "day": "Tuesday",
         "location": "Ashworld Cemetery",
         "numberOfEvents": 3,
-        "eventNames": ["Haunted Carriage", "Haunted Carriage", "Haunted Carriage"]
+        "eventName": "Haunted Carriage"
     },
 
     {
         "day": "Wednesday",
         "location": "Mount Zavain",
         "numberOfEvents": 3,
-        "eventNames": ["Ancient Nightmare", "Ancient Nightmare", "Ancient Nightmare"]
+        "eventName": "Ancient Nightmare"
     },
 
     {
         "day": "Thursday",
         "location": "Realm of Damnation",
         "numberOfEvents": 3,
-        "eventNames": ["Demon Gates", "Demon Gates", "Demon Gates"]
+        "eventName": "Demon Gates"
     },
 
     {
         "day": "Friday",
         "location": "Mount Zavain",
         "numberOfEvents": 3,
-        "eventNames": ["Ancient Nightmare", "Ancient Nightmare", "Ancient Nightmare"]
+        "eventName": "Ancient Nightmare"
     },
 
     {
         "day": "Saturday",
         "location": "Ashworld Cemetery",
         "numberOfEvents": 3,
-        "eventNames": ["Haunted Carriage", "Haunted Carriage", "Haunted Carriage"]
+        "eventName": "Haunted Carriage"
     }
 ]
