@@ -16,11 +16,12 @@ discordIntents.add(
     Discord.Intents.FLAGS.GUILD_PRESENCES,
     Discord.Intents.FLAGS.GUILD_MESSAGES,
     Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+    Discord.Intents.FLAGS.GUILD_INTEGRATIONS,
     Discord.Intents.FLAGS.DIRECT_MESSAGES,
     Discord.Intents.FLAGS.GUILD_VOICE_STATES
 )
 
-const client = new Discord.Client({intents: [discordIntents]});
+const client = new Discord.Client({intents: [discordIntents], partials: ["MESSAGE", "CHANNEL", "REACTION"]});
 client.commands = new Discord.Collection();
 
 const folders = fs.readdirSync('./commands'); // read the directory of folders
@@ -149,8 +150,8 @@ client.on('messageReactionAdd', async (reaction, user) => {
 	if (!reaction.message.guild) return;
 	
 	if (reaction.message.channel.id == '996243464473821214') {
-		if (reaction.emoji.name == ':yes:672316905616572429') {
-			await reaction.message.guild.members.cache.get(user.id).roles.add('995075928742969364')
+		if (reaction.emoji.id == '672316905616572429') {
+			await reaction.message.guild.members.cache.get(user.id).roles.add('995076047647277157')
 		}
 	}
 })
@@ -164,8 +165,8 @@ client.on('messageReactionRemove', async (reaction, user) => {
 	if (!reaction.message.guild) return;
 	
 	if (reaction.message.channel.id == '996243464473821214') {
-		if (reaction.emoji.name == ':yes:672316905616572429') {
-			await reaction.message.guild.members.cache.get(user.id).roles.remove('995075928742969364')
+		if (reaction.emoji.id == '672316905616572429') {
+			await reaction.message.guild.members.cache.get(user.id).roles.remove('995076047647277157')
         }
     }
 })
