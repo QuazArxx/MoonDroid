@@ -41,12 +41,12 @@ client.once('ready', () => {
 // Announces Raid time every Monday at 8:55pm
 const raidEmbed = new Discord.MessageEmbed()
 .setColor('#992D22')
-.setTitle('Dear Mystic Moon Clan, the blood moon is rising and its time to fight Lassal!  Lets get together and RAIIID.')
+.setTitle('Dear Mystic Moon Clan, the blood moon is rising and its time to fight Lassal! Lets get together and RAIIID.')
 
 let raidTime = new CronJob('0 55 20 * * 1', 
     function() {
-        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
-        client.channels.cache.get('982389292619923456').send({embeds: [raidEmbed]})
+        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send({embeds: [raidEmbed]})
     },
     null,
     true,
@@ -60,8 +60,8 @@ const bilefenEmbed = new Discord.MessageEmbed()
 
 let bilefenEvent = new CronJob('0 25 21 * * 0,2,4,6',
     function() {
-        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
-        client.channels.cache.get('982389292619923456').send({embeds: [bilefenEmbed]})
+        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send({embeds: [bilefenEmbed]})
     },
     null,
     true,
@@ -74,8 +74,8 @@ const demonGateEmbed = new Discord.MessageEmbed()
 
 let demonGates1 = new CronJob("0 55 11,21 * * 0,1,4", 
     function() {
-        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
-        client.channels.cache.get('982389292619923456').send({embeds: [demonGateEmbed]})
+        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send({embeds: [demonGateEmbed]})
     },
     null,
     true,
@@ -84,8 +84,8 @@ let demonGates1 = new CronJob("0 55 11,21 * * 0,1,4",
 
 let demonGates2 = new CronJob("0 25 20 * * 0,1,4", 
     function() {
-        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
-        client.channels.cache.get('982389292619923456').send({embeds: [demonGateEmbed]})
+        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send({embeds: [demonGateEmbed]})
     },
     null,
     true,
@@ -98,8 +98,8 @@ const hauntedCarriageEmbed = new Discord.MessageEmbed()
 
 let hauntedCarriage1 = new CronJob("0 55 11,21 * * 2,6", 
     function() {
-        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
-        client.channels.cache.get('982389292619923456').send({embeds: [hauntedCarriageEmbed]})
+        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send({embeds: [hauntedCarriageEmbed]})
     },
     null,
     true,
@@ -108,8 +108,8 @@ let hauntedCarriage1 = new CronJob("0 55 11,21 * * 2,6",
 
 let hauntedCarriage2 = new CronJob("0 25 20 * * 2,6", 
     function() {
-        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
-        client.channels.cache.get('982389292619923456').send({embeds: [hauntedCarriageEmbed]})
+        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send({embeds: [hauntedCarriageEmbed]})
     },
     null,
     true,
@@ -123,8 +123,8 @@ const ancientNightmareEmbed = new Discord.MessageEmbed()
 
 let ancientNightmare1 = new CronJob("0 55 11,21 * * 3,5", 
     function() {
-        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
-        client.channels.cache.get('982389292619923456').send({embeds: [ancientNightmareEmbed]})
+        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send({embeds: [ancientNightmareEmbed]})
     },
     null,
     true,
@@ -133,13 +133,42 @@ let ancientNightmare1 = new CronJob("0 55 11,21 * * 3,5",
 
 let ancientNightmare2 = new CronJob("0 25 20 * * 3,5", 
     function() {
-        client.channels.cache.get('982389292619923456').send('<@&982322327519887400>')
-        client.channels.cache.get('982389292619923456').send({embeds: [ancientNightmareEmbed]})
+        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send({embeds: [ancientNightmareEmbed]})
     },
     null,
     true,
     'America/New_York'
 )
+
+client.on('messageReactionAdd', async (reaction, user) => {
+	if (reaction.message.partial) await reaction.message.fetch();
+	if (reaction.partial) await reaction.fetch();
+	
+	if (user.bot) return;
+	if (!reaction.message.guild) return;
+	
+	if (reaction.message.channel.id == '996243464473821214') {
+		if (reaction.emoji.name == ':yes:672316905616572429') {
+			await reaction.message.guild.members.cache.get(user.id).roles.add('995075928742969364')
+		}
+	}
+})
+
+client.on('messageReactionRemove', async (reaction, user) => {
+
+	if (reaction.message.partial) await reaction.message.fetch();
+	if (reaction.partial) await reaction.fetch();
+	
+	if (user.bot) return;
+	if (!reaction.message.guild) return;
+	
+	if (reaction.message.channel.id == '996243464473821214') {
+		if (reaction.emoji.name == ':yes:672316905616572429') {
+			await reaction.message.guild.members.cache.get(user.id).roles.remove('995075928742969364')
+        }
+    }
+})
 
 client.on('messageCreate', async message => {
 
