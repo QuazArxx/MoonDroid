@@ -46,7 +46,7 @@ const raidEmbed = new Discord.MessageEmbed()
 
 let raidTime = new CronJob('0 55 20 * * 1', 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
         client.channels.cache.get('995032058479001620').send({embeds: [raidEmbed]})
     },
     null,
@@ -61,7 +61,7 @@ const bilefenEmbed = new Discord.MessageEmbed()
 
 let bilefenEvent = new CronJob('0 25 21 * * 0,2,4,6',
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
         client.channels.cache.get('995032058479001620').send({embeds: [bilefenEmbed]})
     },
     null,
@@ -75,7 +75,7 @@ const demonGateEmbed = new Discord.MessageEmbed()
 
 let demonGates1 = new CronJob("0 55 11,21 * * 0,1,4", 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
         client.channels.cache.get('995032058479001620').send({embeds: [demonGateEmbed]})
     },
     null,
@@ -85,7 +85,7 @@ let demonGates1 = new CronJob("0 55 11,21 * * 0,1,4",
 
 let demonGates2 = new CronJob("0 25 20 * * 0,1,4", 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
         client.channels.cache.get('995032058479001620').send({embeds: [demonGateEmbed]})
     },
     null,
@@ -99,7 +99,7 @@ const hauntedCarriageEmbed = new Discord.MessageEmbed()
 
 let hauntedCarriage1 = new CronJob("0 55 11,21 * * 2,6", 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
         client.channels.cache.get('995032058479001620').send({embeds: [hauntedCarriageEmbed]})
     },
     null,
@@ -109,7 +109,7 @@ let hauntedCarriage1 = new CronJob("0 55 11,21 * * 2,6",
 
 let hauntedCarriage2 = new CronJob("0 25 20 * * 2,6", 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
         client.channels.cache.get('995032058479001620').send({embeds: [hauntedCarriageEmbed]})
     },
     null,
@@ -124,7 +124,7 @@ const ancientNightmareEmbed = new Discord.MessageEmbed()
 
 let ancientNightmare1 = new CronJob("0 55 11,21 * * 3,5", 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
         client.channels.cache.get('995032058479001620').send({embeds: [ancientNightmareEmbed]})
     },
     null,
@@ -134,7 +134,7 @@ let ancientNightmare1 = new CronJob("0 55 11,21 * * 3,5",
 
 let ancientNightmare2 = new CronJob("0 25 20 * * 3,5", 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995075928742969364>')
+        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
         client.channels.cache.get('995032058479001620').send({embeds: [ancientNightmareEmbed]})
     },
     null,
