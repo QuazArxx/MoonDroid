@@ -157,6 +157,21 @@ let assemblyEvent = new CronJob('0 55 17 * * 1-6',
     'America/New_York'
 )
 
+// Announces Shadow Lottery time on designated days
+const lotteryEmbed = new Discord.MessageEmbed()
+.setColor('#992D22')
+.setTitle('The lottery is about to begin in 5 minutes. Good luck!')
+
+let shadowLottery = new CronJob('0 55 11,18,21 * * *',
+    function() {
+        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
+        client.channels.cache.get('995032058479001620').send({embeds: [lotteryEmbed]})
+    },
+    null,
+    false,
+    'America/New_York'
+)
+
 client.on('messageReactionAdd', async (reaction, user) => {
 	if (reaction.message.partial) await reaction.message.fetch();
 	if (reaction.partial) await reaction.fetch();
@@ -188,16 +203,22 @@ client.on('messageReactionRemove', async (reaction, user) => {
 
 client.on('messageCreate', async message => {
 
-    if (message.content.toLowerCase() == 'currentday') {
-        message.channel.send(`${daysOfTheWeek[currentDayOfWeek]}`)
+    const lotteryOn = new Discord.MessageEmbed()
+    .setColor('#992D22')
+    .setTitle('Lottery notifications have been turned on.')
+
+    const lotteryOff = new Discord.MessageEmbed()
+    .setColor('#992D22')
+    .setTitle('Lottery notifications have been turned off.')
+
+    if (message.content.toLowerCase() == '!lottery start') {
+        shadowLottery.start()
+        message.reply({ embeds: [lotteryOn] })
     }
 
-    if (message.content.toLowerCase() == 'dayarray') {
-        message.channel.send(`${DiabloEvents[currentDayOfWeek].day}`)
-    }
-
-    if (message.content.toLowerCase() == 'timesarray') {
-        message.channel.send(`${timesArrayIndex}`)
+    if (message.content.toLowerCase() == '!lottery stop') {
+        shadowLottery.stop()
+        message.reply({ embeds: [lotteryOff] })
     }
 
     if (!message.content.startsWith(prefix) || message.author.bot) return;
