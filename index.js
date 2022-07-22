@@ -142,6 +142,21 @@ let ancientNightmare2 = new CronJob("0 25 20 * * 3,5",
     'America/New_York'
 )
 
+// Announces Assembly time on designated days
+const assemblyEmbed = new Discord.MessageEmbed()
+.setColor('#992D22')
+.setTitle('The shadows are getting ready to assemble. Assembly starts in 5 minutes!')
+
+let assemblyEvent = new CronJob('0 55 17 * * 1-6',
+    function() {
+        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
+        client.channels.cache.get('995032058479001620').send({embeds: [assemblyEmbed]})
+    },
+    null,
+    true,
+    'America/New_York'
+)
+
 client.on('messageReactionAdd', async (reaction, user) => {
 	if (reaction.message.partial) await reaction.message.fetch();
 	if (reaction.partial) await reaction.fetch();
