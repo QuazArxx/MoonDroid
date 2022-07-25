@@ -255,12 +255,12 @@ client.on('messageCreate', async message => {
     .setColor('#992D22')
     .setTitle('Lottery notifications have been turned off.')
 
-    if (message.content.toLowerCase() == '!lottery start') {
+    if (message.content.toLowerCase() == '!lottery start' && message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) {
         shadowLottery.start()
         message.reply({ embeds: [lotteryOn] })
     }
 
-    if (message.content.toLowerCase() == '!lottery stop') {
+    if (message.content.toLowerCase() == '!lottery stop' && message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) {
         shadowLottery.stop()
         message.reply({ embeds: [lotteryOff] })
     }
