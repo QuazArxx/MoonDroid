@@ -8,6 +8,28 @@ const functions = require('./functions.js');
 
 let daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
+//List of Channels
+const diabloOptChannel = '996243464473821214'
+const diabloNewsChannel = '995032058479001620'
+
+// List of Diablo Roles
+const diabloNotifRole = '995076047647277157'
+const barbarianRole = '1000928981438189668'
+const crusaderRole = '1000928551652053103'
+const monkRole = '1000928766811459744'
+const dhRole = '1000928696011591771'
+const wizardRole = '1000928649643565128'
+const necromancerRole = '1000928819038912562'
+
+// List of Diablo Emojis
+const diabloNotifEmoji = '672316905616572429'
+const barbarianEmoji = ''
+const crusaderEmoji = ''
+const monkEmoji = ''
+const dhEmoji = ''
+const wizardEmoji = ''
+const necromancerEmoji = ''
+
 // Sets Discord Intents
 const discordIntents = new Discord.Intents()
 discordIntents.add(
@@ -46,8 +68,8 @@ const raidEmbed = new Discord.MessageEmbed()
 
 let raidTime = new CronJob('0 55 20 * * 1', 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
-        client.channels.cache.get('995032058479001620').send({embeds: [raidEmbed]})
+        client.channels.cache.get(diabloNewsChannel).send(`<@&${diabloNotifRole}>`)
+        client.channels.cache.get(diabloNewsChannel).send({embeds: [raidEmbed]})
     },
     null,
     true,
@@ -61,8 +83,8 @@ const bilefenEmbed = new Discord.MessageEmbed()
 
 let bilefenEvent = new CronJob('0 25 21 * * 0,2,4,6',
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
-        client.channels.cache.get('995032058479001620').send({embeds: [bilefenEmbed]})
+        client.channels.cache.get(diabloNewsChannel).send(`<@&${diabloNotifRole}>`)
+        client.channels.cache.get(diabloNewsChannel).send({embeds: [bilefenEmbed]})
     },
     null,
     true,
@@ -75,8 +97,8 @@ const demonGateEmbed = new Discord.MessageEmbed()
 
 let demonGates1 = new CronJob("0 55 11,21 * * 0,1,4", 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
-        client.channels.cache.get('995032058479001620').send({embeds: [demonGateEmbed]})
+        client.channels.cache.get(diabloNewsChannel).send(`<@&${diabloNotifRole}>`)
+        client.channels.cache.get(diabloNewsChannel).send({embeds: [demonGateEmbed]})
     },
     null,
     true,
@@ -85,8 +107,8 @@ let demonGates1 = new CronJob("0 55 11,21 * * 0,1,4",
 
 let demonGates2 = new CronJob("0 25 20 * * 0,1,4", 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
-        client.channels.cache.get('995032058479001620').send({embeds: [demonGateEmbed]})
+        client.channels.cache.get(diabloNewsChannel).send(`<@&${diabloNotifRole}>`)
+        client.channels.cache.get(diabloNewsChannel).send({embeds: [demonGateEmbed]})
     },
     null,
     true,
@@ -99,8 +121,8 @@ const hauntedCarriageEmbed = new Discord.MessageEmbed()
 
 let hauntedCarriage1 = new CronJob("0 55 11,21 * * 2,6", 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
-        client.channels.cache.get('995032058479001620').send({embeds: [hauntedCarriageEmbed]})
+        client.channels.cache.get(diabloNewsChannel).send(`<@&${diabloNotifRole}>`)
+        client.channels.cache.get(diabloNewsChannel).send({embeds: [hauntedCarriageEmbed]})
     },
     null,
     true,
@@ -109,8 +131,8 @@ let hauntedCarriage1 = new CronJob("0 55 11,21 * * 2,6",
 
 let hauntedCarriage2 = new CronJob("0 25 20 * * 2,6", 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
-        client.channels.cache.get('995032058479001620').send({embeds: [hauntedCarriageEmbed]})
+        client.channels.cache.get(diabloNewsChannel).send(`<@&${diabloNotifRole}>`)
+        client.channels.cache.get(diabloNewsChannel).send({embeds: [hauntedCarriageEmbed]})
     },
     null,
     true,
@@ -124,8 +146,8 @@ const ancientNightmareEmbed = new Discord.MessageEmbed()
 
 let ancientNightmare1 = new CronJob("0 55 11,21 * * 3,5", 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
-        client.channels.cache.get('995032058479001620').send({embeds: [ancientNightmareEmbed]})
+        client.channels.cache.get(diabloNewsChannel).send(`<@&${diabloNotifRole}>`)
+        client.channels.cache.get(diabloNewsChannel).send({embeds: [ancientNightmareEmbed]})
     },
     null,
     true,
@@ -134,8 +156,8 @@ let ancientNightmare1 = new CronJob("0 55 11,21 * * 3,5",
 
 let ancientNightmare2 = new CronJob("0 25 20 * * 3,5", 
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
-        client.channels.cache.get('995032058479001620').send({embeds: [ancientNightmareEmbed]})
+        client.channels.cache.get(diabloNewsChannel).send(`<@&${diabloNotifRole}>`)
+        client.channels.cache.get(diabloNewsChannel).send({embeds: [ancientNightmareEmbed]})
     },
     null,
     true,
@@ -149,8 +171,8 @@ const assemblyEmbed = new Discord.MessageEmbed()
 
 let assemblyEvent = new CronJob('0 55 17 * * 1-6',
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
-        client.channels.cache.get('995032058479001620').send({embeds: [assemblyEmbed]})
+        client.channels.cache.get(diabloNewsChannel).send(`<@&${diabloNotifRole}>`)
+        client.channels.cache.get(diabloNewsChannel).send({embeds: [assemblyEmbed]})
     },
     null,
     true,
@@ -164,8 +186,8 @@ const lotteryEmbed = new Discord.MessageEmbed()
 
 let shadowLottery = new CronJob('0 55 11,18,21 * * *',
     function() {
-        client.channels.cache.get('995032058479001620').send('<@&995076047647277157>')
-        client.channels.cache.get('995032058479001620').send({embeds: [lotteryEmbed]})
+        client.channels.cache.get(diabloNewsChannel).send(`<@&${diabloNotifRole}>`)
+        client.channels.cache.get(diabloNewsChannel).send({embeds: [lotteryEmbed]})
     },
     null,
     false,
@@ -179,10 +201,32 @@ client.on('messageReactionAdd', async (reaction, user) => {
 	if (user.bot) return;
 	if (!reaction.message.guild) return;
 	
-	if (reaction.message.channel.id == '996243464473821214') {
-		if (reaction.emoji.id == '672316905616572429') {
-			await reaction.message.guild.members.cache.get(user.id).roles.add('995076047647277157')
-		}
+	if (reaction.message.channel.id == diabloOptChannel) {
+        switch(reaction.emoji.id) {
+            case diabloNotifEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(diabloNotifRole)
+                break
+            case barbarianEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(barbarianRole)
+                break
+            case crusaderEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(crusaderRole)
+                break
+            case monkEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(monkRole)
+                break
+            case dhEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(dhRole)
+                break
+            case wizardEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(wizardRole)
+                break
+            case necromancerEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(necromancerRole)
+                break
+            default:
+                return
+        }
 	}
 })
 
