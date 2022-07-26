@@ -23,12 +23,12 @@ const necromancerRole = '1000928819038912562'
 
 // List of Diablo Emojis
 const diabloNotifEmoji = '672316905616572429'
-const barbarianEmoji = ''
-const crusaderEmoji = ''
-const monkEmoji = ''
-const dhEmoji = ''
-const wizardEmoji = ''
-const necromancerEmoji = ''
+const barbarianEmoji = '1001300617127538798'
+const crusaderEmoji = '1001300619300192256'
+const monkEmoji = '1001300623100235838'
+const dhEmoji = '1001300621305065492'
+const wizardEmoji = '1001300626220789801'
+const necromancerEmoji = '1001300624509509724'
 
 // Sets Discord Intents
 const discordIntents = new Discord.Intents()
@@ -238,9 +238,31 @@ client.on('messageReactionRemove', async (reaction, user) => {
 	if (user.bot) return;
 	if (!reaction.message.guild) return;
 	
-	if (reaction.message.channel.id == '996243464473821214') {
-		if (reaction.emoji.id == '672316905616572429') {
-			await reaction.message.guild.members.cache.get(user.id).roles.remove('995076047647277157')
+	if (reaction.message.channel.id == diabloOptChannel) {
+		switch(reaction.emoji.id) {
+            case diabloNotifEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(diabloNotifRole)
+                break
+            case barbarianEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(barbarianRole)
+                break
+            case crusaderEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(crusaderRole)
+                break
+            case monkEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(monkRole)
+                break
+            case dhEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(dhRole)
+                break
+            case wizardEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(wizardRole)
+                break
+            case necromancerEmoji:
+                await reaction.message.guild.members.cache.get(user.id).roles.add(necromancerRole)
+                break
+            default:
+                return
         }
     }
 })

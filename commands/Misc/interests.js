@@ -9,21 +9,21 @@ module.exports = {
         .setColor('#992D22')
         .setTitle('Use the reactions below to get access to Diablo Class chats!')
         .addFields(
-            {name: 'Barbarian Channel: [Barbarian Emote]', value: '\u200B'},
-            {name: 'Crusader Channel: [Crusader Emote]', value: '\u200B'},
-            {name: 'Monk Channel: [Monk Emote]', value: '\u200B'},
-            {name: 'Demon Hunter Channel: [Demon Hunter Emote]', value: '\u200B'},
-            {name: 'Wizard Channel: [Wizard Emote]', value: '\u200B'},
-            {name: 'Necromancer Channel: [Necromancer Emote]', value: '\u200B'}
+            {name: 'Barbarian Channel: <:barbarians:1001300617127538798>', value: '\u200B'},
+            {name: 'Crusader Channel: <:crusader:1001300619300192256>', value: '\u200B'},
+            {name: 'Monk Channel: <:monk:1001300623100235838>', value: '\u200B'},
+            {name: 'Demon Hunter Channel: <:demonhunter:1001300621305065492>', value: '\u200B'},
+            {name: 'Wizard Channel: <:wizard:1001300626220789801>', value: '\u200B'},
+            {name: 'Necromancer Channel: <:necromancer:1001300624509509724>', value: '\u200B'}
         )
 
         message.channel.send({ embeds: [embed] }).then(msg => {
-            msg.react('[Barbarian Emote]')
-            .then(() => msg.react('[Crusader Emote]'))
-            .then(() => msg.react('[Monk Emote]'))
-            .then(() => msg.react('[Demon Hunter Emote]'))
-            .then(() => msg.react('[Wizard Emote]'))
-            .then(() => msg.react('[Necromancer Emote]'))
+            msg.react('<:barbarians:1001300617127538798>')
+            .then(() => msg.react('<:crusader:1001300619300192256>'))
+            .then(() => msg.react('<:monk:1001300623100235838>'))
+            .then(() => msg.react('<:demonhunter:1001300621305065492>'))
+            .then(() => msg.react('<:wizard:1001300626220789801>'))
+            .then(() => msg.react('<:necromancer:1001300624509509724>'))
             .catch(() => console.error('One of the emojis didn\'t work!'))
         })
     }
