@@ -230,6 +230,10 @@ client.on('messageReactionAdd', async (reaction, user) => {
 	}
 })
 
+client.on('guildMemberAdd', async member => {
+    member.roles.add('378271467969970176')
+})
+
 client.on('messageReactionRemove', async (reaction, user) => {
 
 	if (reaction.message.partial) await reaction.message.fetch();
