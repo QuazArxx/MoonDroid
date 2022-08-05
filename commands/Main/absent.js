@@ -40,7 +40,7 @@ module.exports = {
         .setFooter({ text: `Submitted by ${message.author.username}`, iconURL: null })
         .setTimestamp()
 
-        client.channels.cache.get('1002358788583591968').send('<@&995039357025124452')
+        client.channels.cache.get('1002358788583591968').send('<@&995039357025124452>')
         client.channels.cache.get('1002358788583591968').send({ embeds: [embed] })
     }
 }
