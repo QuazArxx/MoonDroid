@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
     name: 'interests',
     description: 'Sends the message for interests.',
-    execute(message, args) {
+    execute(message, args, client) {
         message.delete()
         const embed = new Discord.MessageEmbed()
         .setColor('#992D22')

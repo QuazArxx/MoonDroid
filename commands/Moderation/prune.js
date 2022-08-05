@@ -2,7 +2,7 @@ module.exports = {
     name: 'prune',
     aliases: ['purge', 'delete'],
     description: 'Removes messages depending on the amount entered.',
-    execute(message, args) {
+    execute(message, args, client) {
         const amount = parseInt(args[0]) + 1;
 
         if (isNaN(amount)) {

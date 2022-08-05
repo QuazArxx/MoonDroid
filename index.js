@@ -301,7 +301,7 @@ client.on('messageCreate', async message => {
     const command = client.commands.get(commandName);
 
     try {
-	    command.execute(message, args);
+	    command.execute(message, args, client);
     } 
     
     catch (error) {

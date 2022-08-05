@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 module.exports = {
     name: 'events',
     description: 'Displays the events and the days',
-    execute(message, args) {
+    execute(message, args, client) {
         const embed = new Discord.MessageEmbed()
         .setColor('#992D22')
         .setTitle('__DAILY EVENTS__')
