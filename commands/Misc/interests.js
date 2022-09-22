@@ -7,7 +7,7 @@ module.exports = {
         message.delete()
         const embed = new Discord.MessageEmbed()
         .setColor('#992D22')
-        .setTitle('Use the reactions below to get access to Diablo Class chats!')
+        .setTitle('Use the reactions below to get access to different parts of the server!')
         .addFields(
             {name: 'Barbarian Channel: <:barbarians:1001300617127538798>', value: '\u200B'},
             {name: 'Crusader Channel: <:crusader:1001300619300192256>', value: '\u200B'},
