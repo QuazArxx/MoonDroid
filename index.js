@@ -245,25 +245,25 @@ client.on('messageReactionRemove', async (reaction, user) => {
 	if (reaction.message.channel.id == diabloOptChannel) {
 		switch(reaction.emoji.id) {
             case diabloNotifEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(diabloNotifRole)
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(diabloNotifRole)
                 break
             case barbarianEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(barbarianRole)
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(barbarianRole)
                 break
             case crusaderEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(crusaderRole)
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(crusaderRole)
                 break
             case monkEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(monkRole)
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(monkRole)
                 break
             case dhEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(dhRole)
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(dhRole)
                 break
             case wizardEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(wizardRole)
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(wizardRole)
                 break
             case necromancerEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(necromancerRole)
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(necromancerRole)
                 break
             default:
                 return
