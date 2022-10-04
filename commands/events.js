@@ -1,10 +1,12 @@
-const Discord = require('discord.js')
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
 
 module.exports = {
-    name: 'events',
-    description: 'Displays the events and the days',
-    execute(message, args, client) {
-        const embed = new Discord.MessageEmbed()
+    data: new SlashCommandBuilder()
+        .setName('events')
+        .setDescription('Displays the events and the days'),
+    category: 'main',
+    async execute(interaction, client) {
+        const embed = new EmbedBuilder()
         .setColor('#992D22')
         .setTitle('__DAILY EVENTS__')
         .addFields(
@@ -20,6 +22,6 @@ module.exports = {
         )
         .setFooter({text: 'All event times are 12pm, 8:30pm and 10pm Server Time'})
 
-        message.reply({embeds: [embed]})
+        interaction.reply({ephemeral: true, embeds: [embed]})
     }
 }

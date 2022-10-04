@@ -1,11 +1,13 @@
-const Discord = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
-    name: 'interests',
-    description: 'Sends the message for interests.',
-    execute(message, args, client) {
-        message.delete()
-        const embed = new Discord.MessageEmbed()
+    data: new SlashCommandBuilder()
+        .setName('interests')
+        .setDescription('Sends the message for interests.'),
+    category: 'extra',
+    async execute(interaction, client) {
+        interaction.delete()
+        const embed = new EmbedBuilder()
         .setColor('#992D22')
         .setTitle('Use the reactions below to get access to different parts of the server!')
         .addFields(
@@ -17,7 +19,7 @@ module.exports = {
             {name: 'Necromancer Channel: <:necromancer:1001300624509509724>', value: '\u200B'}
         )
 
-        message.channel.send({ embeds: [embed] }).then(msg => {
+        interaction.channel.send({ embeds: [embed] }).then(msg => {
             msg.react('<:barbarians:1001300617127538798>')
             .then(() => msg.react('<:crusader:1001300619300192256>'))
             .then(() => msg.react('<:monk:1001300623100235838>'))

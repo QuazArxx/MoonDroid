@@ -1,0 +1,20 @@
+{
+    "diabloOptChannel": "996243464473821214",
+    "diabloNewsChannel": "995032058479001620",
+
+    "diabloNotifRole": "995076047647277157",
+    "barbarianRole": "1000928981438189668",
+    "crusaderRole": "1000928551652053103",
+    "monkRole": "1000928766811459744",
+    "dhRole": "1000928696011591771",
+    "wizardRole": "1000928649643565128",
+    "necromancerRole": "1000928819038912562",
+
+    "diabloNotifEmoji": "672316905616572429",
+    "barbarianEmoji": "1001300617127538798",
+    "crusaderEmoji": "1001300619300192256",
+    "monkEmoji": "1001300623100235838",
+    "dhEmoji": "1001300621305065492",
+    "wizardEmoji": "1001300626220789801",
+    "necromancerEmoji": "1001300624509509724"
+}
