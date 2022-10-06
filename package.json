@@ -1,21 +1,21 @@
 {
-  "name": "galactic-bot",
+  "name": "MoonDroid",
   "version": "0.0.1",
-  "description": "Discord bot for QuazArxx Twitch server",
+  "description": "Diablo bot for MistyMoon's server, MysticMoon",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/QuazArxx/Galactic-Bot.git"
+    "url": "git+https://github.com/QuazArxx/MoonDroid.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/QuazArxx/Galactic-Bot/issues"
+    "url": "https://github.com/QuazArxx/MoonDroid/issues"
   },
-  "homepage": "https://github.com/QuazArxx/Galactic-Bot#readme",
+  "homepage": "https://github.com/QuazArxx/MoonDroid#readme",
   "dependencies": {
     "cron": "^2.0.0",
     "discord.js": "^14.5.0"

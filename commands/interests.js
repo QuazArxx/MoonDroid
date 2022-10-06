@@ -1,32 +1,59 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder } = require('discord.js');
+const wait = require('node:timers/promises').setTimeout
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('interests')
-        .setDescription('Sends the message for interests.'),
+        .setDescription('Sends the message for interests.')
+        .setDefaultMemberPermissions(0),
     category: 'extra',
     async execute(interaction, client) {
-        interaction.delete()
-        const embed = new EmbedBuilder()
-        .setColor('#992D22')
-        .setTitle('Use the reactions below to get access to different parts of the server!')
-        .addFields(
-            {name: 'Barbarian Channel: <:barbarians:1001300617127538798>', value: '\u200B'},
-            {name: 'Crusader Channel: <:crusader:1001300619300192256>', value: '\u200B'},
-            {name: 'Monk Channel: <:monk:1001300623100235838>', value: '\u200B'},
-            {name: 'Demon Hunter Channel: <:demonhunter:1001300621305065492>', value: '\u200B'},
-            {name: 'Wizard Channel: <:wizard:1001300626220789801>', value: '\u200B'},
-            {name: 'Necromancer Channel: <:necromancer:1001300624509509724>', value: '\u200B'}
+        const firstRow = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+            .setCustomId('barbarian')
+            .setLabel('Barbarian')
+            .setStyle(ButtonStyle.Primary),
+
+            new ButtonBuilder()
+            .setCustomId('crusader')
+            .setLabel('Crusader')
+            .setStyle(ButtonStyle.Primary),
+
+            new ButtonBuilder()
+            .setCustomId('monk')
+            .setLabel('Monk')
+            .setStyle(ButtonStyle.Primary)
         )
 
-        interaction.channel.send({ embeds: [embed] }).then(msg => {
-            msg.react('<:barbarians:1001300617127538798>')
-            .then(() => msg.react('<:crusader:1001300619300192256>'))
-            .then(() => msg.react('<:monk:1001300623100235838>'))
-            .then(() => msg.react('<:demonhunter:1001300621305065492>'))
-            .then(() => msg.react('<:wizard:1001300626220789801>'))
-            .then(() => msg.react('<:necromancer:1001300624509509724>'))
-            .catch(() => console.error('One of the emojis didn\'t work!'))
-        })
+        const secondRow = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+            .setCustomId('demonhunter')
+            .setLabel('Demon Hunter')
+            .setStyle(ButtonStyle.Primary),
+
+            new ButtonBuilder()
+            .setCustomId('wizard')
+            .setLabel('Wizard')
+            .setStyle(ButtonStyle.Primary),
+
+            new ButtonBuilder()
+            .setCustomId('necromancer')
+            .setLabel('Necromancer')
+            .setStyle(ButtonStyle.Primary)
+        )
+
+        const diabloNotif = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+            .setCustomId('diabloNotif')
+            .setLabel('Click to opt in or out of Diablo notifications!')
+            .setStyle(ButtonStyle.Primary)
+        )
+
+        await interaction.channel.send({ components: [diabloNotif] })
+        await interaction.channel.send({ content: '**__Use the buttons below to add or remove class channels!__**', components: [firstRow, secondRow] })
+        await interaction.reply({ content: 'Buttons Sent', ephemeral: true })
     }
 }

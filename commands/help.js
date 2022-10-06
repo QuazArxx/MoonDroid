@@ -21,6 +21,11 @@ module.exports = {
             {
                 commandCategory: "Admin",
                 commandArray: []
+            },
+
+            {
+                commandCategory: "Testing",
+                commandArray: []
             }
         ]
 
@@ -28,6 +33,7 @@ module.exports = {
 
         if (!(interaction.member.permissions.has(PermissionsBitField.Flags.Administrator))) {
             commands.sweep(command => command.category === 'admin')
+            commands.sweep(command => command.category === 'testing')
         }
 
         for (let x = 0; x < commandCategories.length; x++) {
@@ -52,6 +58,6 @@ module.exports = {
             commandsList += `\n`
         }
 
-        interaction.reply(commandsList)
+        interaction.reply({ content: commandsList, ephemeral: true })
     }
 }

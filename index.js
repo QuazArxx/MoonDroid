@@ -1,12 +1,11 @@
 const { Client, Collection, IntentsBitField, EmbedBuilder, PermissionsBitField } = require('discord.js');
 const CronJob = require('cron').CronJob
-const { prefix, token } = require('./config.json');
+const { token } = require('./config.json');
+
 const fs = require('node:fs');
 const path = require('node:path')
 
 const data = require('./Data.json');
-
-let daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 // Sets Discord IntentsBitField
 const discordIntents = new IntentsBitField()
@@ -25,17 +24,6 @@ discordIntents.add(
 const client = new Client({intents: discordIntents, partials: ["MESSAGE", "CHANNEL", "REACTION"]});
 client.commands = new Collection();
 
-const folders = fs.readdirSync('./commands'); // read the directory of folders
-
-// Sets how to find the subfolders with commands
-/*for (var folder of folders) {
-    const files = fs.readdirSync(`./commands/${folder}`); // for each folder, read the files in the folder
-    for (var file of files) {
-        const command = require(`./commands/${folder}/${file}`); // for each file, set the command
-        client.commands.set(command.data.name, command)
-    }
-}*/
-
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
@@ -48,21 +36,6 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', () => console.log('Ready!'));
-
-// Announces Raid time every Monday at 8:55pm
-const raidEmbed = new EmbedBuilder()
-.setColor('#992D22')
-.setTitle('Dear Mystic Moon Clan, the blood moon is rising and its time to fight Lassal! Lets get together and RAIIID.')
-
-let raidTime = new CronJob('0 55 20 * * 1', 
-    function() {
-        client.channels.cache.get(data.diabloNewsChannel).send(`<@&${data.diabloNotifRole}>`)
-        client.channels.cache.get(data.diabloNewsChannel).send({embeds: [raidEmbed]})
-    },
-    null,
-    true,
-    'America/New_York'
-)
 
 // Announces Bilefen PVP time on designated days
 const bilefenEmbed = new EmbedBuilder()
@@ -167,100 +140,92 @@ let assemblyEvent = new CronJob('0 55 17 * * 1-6',
     'America/New_York'
 )
 
-// Announces Shadow Lottery time on designated days
-const lotteryEmbed = new EmbedBuilder()
-.setColor('#992D22')
-.setTitle('The lottery is about to begin in 5 minutes. Good luck!')
-
-let shadowLottery = new CronJob('0 55 11,18,21 * * *',
-    function() {
-        client.channels.cache.get(data.diabloNewsChannel).send(`<@&${data.diabloNotifRole}>`)
-        client.channels.cache.get(data.diabloNewsChannel).send({embeds: [lotteryEmbed]})
-    },
-    null,
-    false,
-    'America/New_York'
-)
-
-client.on('messageReactionAdd', async (reaction, user) => {
-	if (reaction.message.partial) await reaction.message.fetch();
-	if (reaction.partial) await reaction.fetch();
-	
-	if (user.bot) return;
-	if (!reaction.message.guild) return;
-	
-	if (reaction.message.channel.id == data.diabloOptChannel) {
-        switch(reaction.emoji.id) {
-            case diabloNotifEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(data.diabloNotifRole)
-                break
-            case barbarianEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(data.barbarianRole)
-                break
-            case crusaderEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(data.crusaderRole)
-                break
-            case monkEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(data.monkRole)
-                break
-            case dhEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(data.dhRole)
-                break
-            case wizardEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(data.wizardRole)
-                break
-            case necromancerEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.add(data.necromancerRole)
-                break
-            default:
-                return
-        }
-	}
-})
-
 client.on('guildMemberAdd', async member => {
     member.roles.add('378271467969970176')
 })
 
-client.on('messageReactionRemove', async (reaction, user) => {
+client.on('interactionCreate', async interaction => {
+    if (!interaction.isButton()) return
 
-	if (reaction.message.partial) await reaction.message.fetch();
-	if (reaction.partial) await reaction.fetch();
-	
-	if (user.bot) return;
-	if (!reaction.message.guild) return;
-	
-	if (reaction.message.channel.id == data.diabloOptChannel) {
-		switch(reaction.emoji.id) {
-            case diabloNotifEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(data.diabloNotifRole)
-                break
-            case barbarianEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(data.barbarianRole)
-                break
-            case crusaderEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(data.crusaderRole)
-                break
-            case monkEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(data.monkRole)
-                break
-            case dhEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(data.dhRole)
-                break
-            case wizardEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(data.wizardRole)
-                break
-            case necromancerEmoji:
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(data.necromancerRole)
-                break
-            default:
-                return
-        }
+    switch (interaction.customId) {
+        case 'diabloImmortalIn':
+            await interaction.deferUpdate()
+            await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.diabloImmortalRole)
+            break
+        case 'diabloImmortalOut':
+            await interaction.deferUpdate()
+            await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.diabloImmortalRole)
+            break
+        case 'diabloNotif':
+            if (!interaction.member.roles.cache.has(data.diabloNotifRole)) {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.diabloNotifRole)
+            } else {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.diabloNotifRole)
+            }
+            break
+        case 'barbarian':
+            if (!interaction.member.roles.cache.has(data.barbarianRole)) {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.barbarianRole)
+            } else {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.barbarianRole)
+            }
+            break
+        case 'crusader':
+            if (!interaction.member.roles.cache.has(data.crusaderRole)) {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.crusaderRole)
+            } else {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.crusaderRole)
+            }
+            break
+        case 'monk':
+            if (!interaction.member.roles.cache.has(data.monkRole)) {
+                 await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.monkRole)
+            } else {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.monkRole)
+            }
+            break
+        case 'demonhunter':
+            if (!interaction.member.roles.cache.has(data.dhRole)) {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.dhRole)
+            } else {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.dhRole)
+            }
+            break
+        case 'wizard':
+            if (!interaction.member.roles.cache.has(data.wizardRole)) {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.wizardRole)
+            } else {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.wizardRole)
+            }
+            break
+        case 'necromancer':
+            if (!interaction.member.roles.cache.has(data.bnecromancerRole)) {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.necromancerRole)
+            } else {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.necromancerRole)
+            }
+            break
+        default:
+            return  
     }
 })
 
 client.on('interactionCreate', async interaction => {
-    if (!interaction.isChatInputCommand) return;
+    if (!interaction.isChatInputCommand) return
 
     const command = interaction.client.commands.get(interaction.commandName)
     
