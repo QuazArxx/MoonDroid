@@ -4,8 +4,7 @@ const wait = require('node:timers/promises').setTimeout
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('interests')
-        .setDescription('Sends the message for interests.')
-        .setDefaultMemberPermissions(0),
+        .setDescription('Sends the message for interests.'),
     category: 'extra',
     async execute(interaction, client) {
         const firstRow = new ActionRowBuilder()
