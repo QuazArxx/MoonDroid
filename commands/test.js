@@ -3,8 +3,7 @@ const { ActionRowBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder } = re
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('test')
-        .setDescription('test command for new commands.')
-        .setDefaultMemberPermissions(0),
+        .setDescription('test command for new commands.'),
     category: 'testing',
     async execute(interaction, client) {
         const diabloImmortalIn = new ActionRowBuilder()
