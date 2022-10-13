@@ -231,6 +231,8 @@ client.on('interactionCreate', async interaction => {
     
     if (!command) return;
 
+    if (command.data.category == 'testing' && !interaction.user.roles.cache.has('374929787816378373')) return
+
     try {
 	    await command.execute(interaction, client);
     }  
