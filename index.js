@@ -1,4 +1,4 @@
-const { Client, Collection, IntentsBitField, EmbedBuilder, PermissionsBitField } = require('discord.js');
+const { Client, Collection, IntentsBitField, EmbedBuilder } = require('discord.js');
 const CronJob = require('cron').CronJob
 const { token } = require('./config.json');
 

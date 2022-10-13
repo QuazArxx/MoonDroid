@@ -5,7 +5,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('interests')
         .setDescription('Sends the message for interests.'),
-    category: 'extra',
+    category: 'testing',
     async execute(interaction, client) {
         const firstRow = new ActionRowBuilder()
         .addComponents(
