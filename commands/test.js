@@ -23,7 +23,7 @@ module.exports = {
         )
 
         await interaction.reply({ content: 'Button Sent', ephemeral: true })
-        await client.channels.cache.get('982389292619923456').send({ components: [diabloImmortalIn] })
+        await client.channels.cache.get('1029900606065877012').send({ components: [diabloImmortalIn] })
         await client.channels.cache.get('996243464473821214').send({ components: [diabloImmortalOut] })
     }
 }
