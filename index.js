@@ -1,4 +1,4 @@
-const { Client, Collection, IntentsBitField, EmbedBuilder, PermissionsBitField } = require('discord.js');
+const { Client, Collection, IntentsBitField, EmbedBuilder } = require('discord.js');
 const CronJob = require('cron').CronJob
 const { token } = require('./config.json');
 
@@ -235,6 +235,8 @@ client.on('interactionCreate', async interaction => {
     const command = interaction.client.commands.get(interaction.commandName)
     
     if (!command) return;
+
+    if (command.data.category == 'testing' && !interaction.user.roles.cache.has('374929787816378373')) return
 
     try {
 	    await command.execute(interaction, client);
