@@ -211,7 +211,7 @@ client.on('interactionCreate', async interaction => {
             }
             break
         case 'necromancer':
-            if (!interaction.member.roles.cache.has(data.bnecromancerRole)) {
+            if (!interaction.member.roles.cache.has(data.necromancerRole)) {
                 await interaction.deferUpdate()
                 await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.necromancerRole)
             } else {
@@ -219,6 +219,11 @@ client.on('interactionCreate', async interaction => {
                 await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.necromancerRole)
             }
             break
+        case "dreamerOptOut":
+            if (interaction.member.roles.cache.has(data.dreamersRole)) {
+                await interaction.deferUpdate()
+                await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.dreamersRole)
+            }
         default:
             return  
     }
