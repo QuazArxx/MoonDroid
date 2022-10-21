@@ -1,6 +1,6 @@
 {
   "name": "moondroid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Diablo bot for MistyMoon's server, MysticMoon",
   "main": "index.js",
   "scripts": {
