@@ -158,70 +158,73 @@ client.on('interactionCreate', async interaction => {
             break
         case 'diabloNotif':
             if (!interaction.member.roles.cache.has(data.diabloNotifRole)) {
-                await interaction.deferUpdate()
+                await interaction.reply({ content: "You will now receive Diablo notifications.", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.diabloNotifRole)
             } else {
-                await interaction.deferUpdate()
+                await interaction.reply({ content: "You will no longer receive Diablo notifications.", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.diabloNotifRole)
             }
             break
         case 'barbarian':
             if (!interaction.member.roles.cache.has(data.barbarianRole)) {
-                await interaction.deferUpdate()
+                await interaction.reply({ content: "You have added the Barbarian role!", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.barbarianRole)
             } else {
-                await interaction.deferUpdate()
+                await interaction.reply({ content: "You have removed the Barbarian role", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.barbarianRole)
             }
             break
         case 'crusader':
             if (!interaction.member.roles.cache.has(data.crusaderRole)) {
-                await interaction.deferUpdate()
+                await interaction.reply({ content: "You have added the Crusader role", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.crusaderRole)
             } else {
-                await interaction.deferUpdate()
+                await interaction.reply({ content: "You have removed the Crusader role", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.crusaderRole)
             }
             break
         case 'monk':
             if (!interaction.member.roles.cache.has(data.monkRole)) {
-                 await interaction.deferUpdate()
+                await interaction.reply({ content: "You have added the Monk role", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.monkRole)
             } else {
-                await interaction.deferUpdate()
+                await interaction.reply({ content: "You have removed the Monk role", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.monkRole)
             }
             break
         case 'demonhunter':
             if (!interaction.member.roles.cache.has(data.dhRole)) {
-                await interaction.deferUpdate()
+                await interaction.reply({ content: "You have added the Demon Hunter role", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.dhRole)
             } else {
-                await interaction.deferUpdate()
+                await interaction.reply({ content: "You have removed the Demon Hunter role", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.dhRole)
             }
             break
         case 'wizard':
             if (!interaction.member.roles.cache.has(data.wizardRole)) {
-                await interaction.deferUpdate()
+                await interaction.reply({ content: "You have added the Wizard role", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.wizardRole)
             } else {
-                await interaction.deferUpdate()
+                await interaction.reply({ content: "You have removed the Wizard role", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.wizardRole)
             }
             break
         case 'necromancer':
             if (!interaction.member.roles.cache.has(data.necromancerRole)) {
-                await interaction.deferUpdate()
+                await interaction.reply({ content: "You have added the Necromancer role", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.necromancerRole)
             } else {
-                await interaction.deferUpdate()
+                await interaction.reply({ content: "You have removed the Necromancer role", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.necromancerRole)
             }
             break
         case "dreamerOptOut":
-            if (interaction.member.roles.cache.has(data.dreamersRole)) {
-                await interaction.deferUpdate()
+            if (!interaction.member.roles.cache.has(data.dreamersRole)) {
+                await interaction.reply({ content: "You have added the Dreamers role", ephemeral: true})
+                await interaction.guild.members.cache.get(interaction.user.id).roles.add(data.dreamersRole)
+            } else {
+                await interaction.reply({ content: "You have removed the Dreamers role", ephemeral: true})
                 await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.dreamersRole)
             }
         default:
