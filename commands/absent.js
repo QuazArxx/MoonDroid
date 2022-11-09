@@ -18,12 +18,8 @@ module.exports = {
         interaction.reply({ content: `Thank you for your submission. Mystic Officers have been notified of your expected absence.`, ephemeral: true })
 
         const input = interaction.options.getString('time')
-        let reason = 'None Given'
-
-        if (interaction.options.getString('reason')) {
-            reason = interaction.options.getString('reason')
-        }
-
+        let reason = interaction.options.getString('reason') ?? 'No reason given'
+        
         const embed = new EmbedBuilder()
         .setColor('#992D22')
         .setTitle(`__New Temporary Leave of Absence Has Been Submitted__`)
