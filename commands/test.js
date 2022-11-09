@@ -5,13 +5,13 @@ module.exports = {
         .setName('test')
         .setDescription('Displays the events and the days')
         .addBooleanOption(option =>
-            option.setName('Ancient Arena Times')
+            option.setName('Ancient_Arena_Times')
             .setDescription('Do you want to view Ancient Arena times?')
             .setRequired(true))
             .setDefaultMemberPermissions(0),
     category: 'main',
     async execute(interaction, client) {
-        const bool = interaction.options.getBoolean('Ancient Arena Times')
+        const bool = interaction.options.getBoolean('Ancient_Arena_Times')
         
         if (bool) {
             const embedded = new EmbedBuilder()
