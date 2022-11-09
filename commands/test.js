@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
+const id = require('../Data.json')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -7,10 +8,11 @@ module.exports = {
         .addBooleanOption(option =>
             option.setName('arena')
             .setDescription('Do you want to view Ancient Arena times?')
-            .setRequired(true))
-            .setDefaultMemberPermissions(0),
+            .setRequired(true)),
     category: 'main',
     async execute(interaction, client) {
+        if (!interaction.member.roles.cache.has(id.diabloOfficerRole)) return
+        
         const bool = interaction.options.getBoolean('arena')
         
         if (bool) {
