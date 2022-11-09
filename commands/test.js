@@ -1,20 +1,48 @@
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder } = require('discord.js')
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('test')
-        .setDescription('test command for new commands.'),
-    category: 'testing',
+        .setDescription('Displays the events and the days')
+        .addBooleanOption(option =>
+            option.setName('Ancient Arena Times')
+            .setDescription('Do you want to view Ancient Arena times?')
+            .setRequired(true))
+            .setDefaultMemberPermissions(0),
+    category: 'main',
     async execute(interaction, client) {
-        const dreamerOptOut = new ActionRowBuilder()
-        .addComponents(
-            new ButtonBuilder()
-            .setCustomId('dreamerOptOut')
-            .setLabel('Click to remove the Dreamer role!')
-            .setStyle(ButtonStyle.Primary)
-        )
+        const bool = interaction.options.getBoolean('Ancient Arena Times')
+        
+        if (bool) {
+            const embedded = new EmbedBuilder()
+            .setColor('#992D22')
+            .setTitle('__Ancient Arena Schedule__')
+            .addFields(
+                {name: '\u200B', value: '\u200B'},
+                {name: 'Sunday', value: '9:30pm Server Time'},
+                {name: 'Tuesday', value: '9:30pm Server Time'},
+                {name: 'Thursday', value: '9:30pm Server Time'},
+                {name: 'Saturday', value: '9:30pm Server Time'}
+            )
+            return await interaction.reply({ephemeral: true, embeds: [embedded]})
+        }
 
-        await interaction.reply({ content: 'Button Sent', ephemeral: true })
-        await interaction.channel.send({ components: [dreamerOptOut] })
+        const embed = new EmbedBuilder()
+        .setColor('#992D22')
+        .setTitle('__DAILY EVENTS__')
+        .addFields(
+            {name: '\u200B', value: '\u200B'},
+            {name: 'Sunday: ', value: 'Demon Gates in Realm of Damnation'},
+            {name: 'Monday:', value: 'Demon Gates in Realm of Damnation'},
+            {name: 'Tuesday:', value: 'Haunted Carriage in Ashworld Cemetery'},
+            {name: 'Wednesday:', value: 'Ancient Nightmare in Mount Zavain'},
+            {name: 'Thursday:', value: 'Demon Gates in Realm of Damnation'},
+            {name: 'Friday:', value: 'Ancient Nightmare in Mount Zavain'},
+            {name: 'Saturday:', value: 'Haunted Carriage in Ashworld Cemetery'},
+            {name: '\u200B', value: '\u200B'}
+        )
+        .setFooter({text: 'All event times are 12pm, 8:30pm and 10pm Server Time'})
+
+        await interaction.reply({ephemeral: true, embeds: [embed]})
     }
 }
