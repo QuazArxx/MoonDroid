@@ -6,6 +6,7 @@ module.exports = {
         .setName('interests')
         .setDescription('Sends the message for interests.'),
     category: 'testing',
+    officerCommand: true,
     async execute(interaction, client) {
         const firstRow = new ActionRowBuilder()
         .addComponents(

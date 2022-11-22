@@ -239,15 +239,23 @@ client.on('interactionCreate', async interaction => {
     
     if (!command) return;
 
-    if (command.data.category == 'testing' && !interaction.user.roles.cache.has('374929787816378373')) return
+    if (command.data.officerCommand == true && !interaction.user.roles.cache.has(data.diabloOfficerRole)) return
 
     try {
 	    await command.execute(interaction, client);
     }  
     catch (error) {
 	    console.error(error);
-	    await interaction.reply({ content: 'There was an error trying to execute that command!', ephemeral: true });
+	    await interaction.reply({ content: 'Something went wrong! Don\'t worry though, Quaz has been notified.', ephemeral: true })
+
+        const embed = new EmbedBuilder()
+        .setColor('Red')
+        .setTitle('Command Error')
+        .addFields(
+            {name: `${interaction.user.username} tried to use "${interaction}" but it failed.`, value: `${error}`}
+        )
+        await client.users.send(data.quazId, { embeds: [embed] })
     }
-});
+})
 
 client.login(token);

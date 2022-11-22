@@ -13,6 +13,7 @@ module.exports = {
                 .setDescription('Give a reason (OPTIONAL).')
                 .setRequired(false)),
     category: 'main',
+    officerCommand: false,
     async execute(interaction, client) {
         // Send their message to the right channel and tag Mystic Officers
         interaction.reply({ content: `Thank you for your submission. Mystic Officers have been notified of your expected absence.`, ephemeral: true })

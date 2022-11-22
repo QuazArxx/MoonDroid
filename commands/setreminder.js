@@ -3,9 +3,9 @@ const { SlashCommandBuilder } = require('discord.js')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('setreminder')
-        .setDescription('Allows users to get a DM at a specific time that is set.')
-        .setDefaultMemberPermissions(0),
+        .setDescription('Allows users to get a DM at a specific time that is set.'),
     category: 'testing',
+    officerCommand: true,
     async execute(interaction, client) {
         // Push reminders to an array to be stored
 

@@ -1,10 +1,13 @@
-const { SlashCommandBuilder, PermissionsBitField } = require('discord.js')
+const { SlashCommandBuilder } = require('discord.js')
+
+const data = require('../Data.json')
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('help')
         .setDescription('Displays commands'),
     category: 'extra',
+    officerCommand: false,
     async execute(interaction, client) {
         const commands = client.commands
         const commandCategories = [    
@@ -31,7 +34,7 @@ module.exports = {
 
         commands.sweep(command => command.category === 'extra')
 
-        if (!(interaction.member.permissions.has(PermissionsBitField.Flags.Administrator))) {
+        if (!(interaction.member.roles.cache.has(data.diabloOfficerRole))) {
             commands.sweep(command => command.category === 'admin')
             commands.sweep(command => command.category === 'testing')
         }

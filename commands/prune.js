@@ -10,6 +10,7 @@ module.exports = {
             .setDescription('Input the number of messages to delete.')
             .setRequired(true)),
     category: 'admin',
+    officerCommand: true,
     async execute(interaction, client) {
         const amount = interaction.options.getInteger('messages')
 

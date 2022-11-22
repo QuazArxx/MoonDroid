@@ -1,50 +1,38 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
-const id = require('../Data.json')
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('test')
-        .setDescription('Displays the events and the days')
-        .addBooleanOption(option =>
-            option.setName('arena')
-            .setDescription('Do you want to view Ancient Arena times?')
-            .setRequired(true)),
-    category: 'main',
+        .setDescription('Used for testing new or updated commands')
+        .addUserOption(user =>
+            user.setName('target')
+            .setDescription('Whose info do you want to view? (Leave blank to view your own)')
+            .setRequired(false)),
+    category: 'test',
+    officerCommand: true,
     async execute(interaction, client) {
-        if (!interaction.member.roles.cache.has(id.diabloOfficerRole)) return
-        
-        const bool = interaction.options.getBoolean('arena')
-        
-        if (bool) {
-            const embedded = new EmbedBuilder()
-            .setColor('#992D22')
-            .setTitle('__Ancient Arena Schedule__')
-            .addFields(
-                {name: '\u200B', value: '\u200B'},
-                {name: 'Sunday', value: '9:30pm Server Time'},
-                {name: 'Tuesday', value: '9:30pm Server Time'},
-                {name: 'Thursday', value: '9:30pm Server Time'},
-                {name: 'Saturday', value: '9:30pm Server Time'}
-            )
-            return await interaction.reply({ephemeral: true, embeds: [embedded]})
-        }
+        let target = interaction.options.getUser('target') || interaction.user
+
+        let member = interaction.options.getMember('target')
+        let joinDate = member.joinedAt
+        const timeOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}
+        let localDate = joinDate.toLocaleDateString(undefined, timeOptions)
+        let localTime = joinDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
 
         const embed = new EmbedBuilder()
-        .setColor('#992D22')
-        .setTitle('__DAILY EVENTS__')
+        .setColor('DarkRed')
+        .setTitle(`"${interaction.guild.name}" Server Info for *__${member.displayName}__*`)
+        .setThumbnail(target.displayAvatarURL({ dynamic: true }))
         .addFields(
-            {name: '\u200B', value: '\u200B'},
-            {name: 'Sunday: ', value: 'Demon Gates in Realm of Damnation'},
-            {name: 'Monday:', value: 'Demon Gates in Realm of Damnation'},
-            {name: 'Tuesday:', value: 'Haunted Carriage in Ashworld Cemetery'},
-            {name: 'Wednesday:', value: 'Ancient Nightmare in Mount Zavain'},
-            {name: 'Thursday:', value: 'Demon Gates in Realm of Damnation'},
-            {name: 'Friday:', value: 'Ancient Nightmare in Mount Zavain'},
-            {name: 'Saturday:', value: 'Haunted Carriage in Ashworld Cemetery'},
+            {name: '__Username__', value: `${member.displayName}`},
+            {name: '__User Tag__', value: `${target.tag}`},
+            {name: '__Discord ID__', value: `${target.id}`},
+            {name: '__Joined Server__', value: `${localDate} at ${localTime} EST`},
             {name: '\u200B', value: '\u200B'}
         )
-        .setFooter({text: 'All event times are 12pm, 8:30pm and 10pm Server Time'})
+        .setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true })})
+        
 
-        await interaction.reply({ephemeral: true, embeds: [embed]})
+        await interaction.reply({ embeds: [embed] })
     }
 }
