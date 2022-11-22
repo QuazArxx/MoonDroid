@@ -1,0 +1,6 @@
+- Finish info command in localtest✅
+
+- Finish changelog for Version 1.2.0✅
+
+- Add command to restart bot even though you still have to deploy commands✅
+  - Check if you need to restart the bot every time you update commands✅

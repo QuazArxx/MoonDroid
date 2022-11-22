@@ -1,0 +1,41 @@
+##Version 1.2.0 - New Commands Added and Bug Fixes## 11/22/2022
+
+NEW
+- New Spy command to change any member into the Diablo Spy role
+
+- New Bug command to report any bugs with the bot. Reports submitted are sent in a DM to Quaz
+
+CHANGES
+- /events command updated to allow you to view Ancient Arena schedule or not.
+
+- Code changed to make commands work better. Shouldn't notice much of a difference
+
+- Test command updated with new command. Officers will be notified of the changes
+
+- Any time an error from a command occurs, it will automatically notify me 
+
+FIXES
+- /help command will now display properly for Mystic Officers
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+##Version 1.1.0 - New Button Added## 10/19/2022
+
+NEW
+- Button added to remove Dreamer Role
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+##Version 1.0.0 - Initial Full Release## 10/06/2022
+
+NEW
+- /help command has been added to give you the full list of commands that you can use. It will only show you the commands available to you.
+
+- New buttons have been added! Check the opt-in channel to see. The buttons act the same as the reaction roles did and can still be used to add or remove roles.
+
+- New button has been added in the opt-in channel to remove the Diablo Immortal role from yourself if you decide you're done playing. A button has also been added to the #diablo-immortal channel to allow anyone to add the role to get access to the clan chats! If you already have the role, you won't see the channel anymore! You can only see it if you don't have the role
+
+CHANGES
+- Updated the /absent command. You'll now be required to enter in the amount of time you will be away. You can say "2 weeks" or "7 days" anything else. Afterwards you will have the option to enter a reason. You don't need to specify a reason if you don't want to!
+
+- The #diablo-immortal channel is now only for opting in to the role! This is why I had mentioned saving anything you needed. If you don't have the role, you'll notice the only thing in the channel is the button now. When it's up and working of course.
