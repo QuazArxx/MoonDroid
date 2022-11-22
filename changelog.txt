@@ -1,7 +1,7 @@
 ##Version 1.2.0 - New Commands Added and Bug Fixes## 11/22/2022
 
 NEW
-- New Spy command to change any member into the Diablo Spy role
+- New Spy command to change any member into the Diablo Spy role (For Mystic Officers Only)
 
 - New Bug command to report any bugs with the bot. Reports submitted are sent in a DM to Quaz
 
