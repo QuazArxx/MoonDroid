@@ -13,7 +13,7 @@ module.exports = {
     async execute(interaction, client) {
         let target = interaction.options.getUser('target') || interaction.user
 
-        let member = interaction.options.getMember('target')
+        let member = interaction.guild.members.cache.get(target.id)
         let joinDate = member.joinedAt
         const timeOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}
         let localDate = joinDate.toLocaleDateString(undefined, timeOptions)
