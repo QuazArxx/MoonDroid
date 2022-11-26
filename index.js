@@ -38,7 +38,7 @@ for (const file of commandFiles) {
 client.once('ready', () => console.log('Ready!'));
 
 // Announces Bilefen PVP time on designated days
-const bilefenEmbed = new EmbedBuilder()
+/*const bilefenEmbed = new EmbedBuilder()
 .setColor('#992D22')
 .setTitle('Ancient Arena [PvP] in Bilefen starts in 5 minutes!')
 
@@ -138,7 +138,7 @@ let assemblyEvent = new CronJob('0 55 17 * * 1-6',
     null,
     true,
     'America/New_York'
-)
+)*/
 
 client.on('guildMemberAdd', async member => {
     member.roles.add('378271467969970176')
