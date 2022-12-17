@@ -1,5 +1,4 @@
 const { Client, Collection, IntentsBitField, EmbedBuilder } = require('discord.js');
-const CronJob = require('cron').CronJob
 const { token } = require('./config.json');
 
 const fs = require('node:fs');
@@ -37,6 +36,7 @@ for (const file of commandFiles) {
 
 client.once('ready', () => console.log('Ready!'));
 
+<<<<<<< HEAD
 // Announces Bilefen PVP time on designated days
 /*const bilefenEmbed = new EmbedBuilder()
 .setColor('#992D22')
@@ -140,6 +140,8 @@ let assemblyEvent = new CronJob('0 55 17 * * 1-6',
     'America/New_York'
 )*/
 
+=======
+>>>>>>> f6f3b2acf079cfa4de3967bbb585ec2d5c6fe399
 client.on('guildMemberAdd', async member => {
     member.roles.add('378271467969970176')
 })
