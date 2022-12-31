@@ -8,7 +8,7 @@ module.exports = {
             option.setName('arena')
             .setDescription('Do you want to view Ancient Arena times?')
             .setRequired(true)),
-    category: 'main',
+    category: 'general',
     officerCommand: true,
     async execute(interaction, client) {
         const bool = interaction.options.getBoolean('arena')

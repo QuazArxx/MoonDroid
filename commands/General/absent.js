@@ -12,7 +12,7 @@ module.exports = {
             option.setName('reason')
                 .setDescription('Give a reason (OPTIONAL).')
                 .setRequired(false)),
-    category: 'main',
+    category: 'general',
     officerCommand: false,
     async execute(interaction, client) {
         // Send their message to the right channel and tag Mystic Officers

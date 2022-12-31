@@ -2,9 +2,9 @@ const { Client, Collection, IntentsBitField, EmbedBuilder } = require('discord.j
 const { token } = require('./config.json');
 
 const fs = require('node:fs');
-const path = require('node:path')
 
 const data = require('./Data.json');
+const { sequelize } = require('./Database/server');
 
 // Sets Discord IntentsBitField
 const discordIntents = new IntentsBitField()
@@ -23,15 +23,15 @@ discordIntents.add(
 const client = new Client({intents: discordIntents, partials: ["MESSAGE", "CHANNEL", "REACTION"]});
 client.commands = new Collection();
 
-const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+const commandsFolders = fs.readdirSync('./commands');
 
-for (const file of commandFiles) {
-	const filePath = path.join(commandsPath, file);
-	const command = require(filePath);
-	// Set a new item in the Collection
-	// With the key as the command name and the value as the exported module
-	client.commands.set(command.data.name, command);
+for (const folder of commandsFolders) {
+	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'))
+	
+	for (const file of commandFiles) {
+		const command = require(`./commands/${folder}/${file}`);
+		client.commands.set(command.data.name, command)
+	}
 }
 
 client.once('ready', () => console.log('Ready!'));
@@ -138,7 +138,7 @@ client.on('interactionCreate', async interaction => {
     if (command.data.officerCommand == true && !interaction.user.roles.cache.has(data.diabloOfficerRole)) return
 
     try {
-	    await command.execute(interaction, client);
+	    await command.execute(interaction, client)
     }  
     catch (error) {
 	    console.error(error);
@@ -155,3 +155,4 @@ client.on('interactionCreate', async interaction => {
 })
 
 client.login(token);
+sequelize.authenticate()

@@ -1,3 +1,30 @@
+##Version 1.3.0 - New Feature with Commands## xx/xx/xxxx
+
+NEW
+- New currency feature
+    - New START command to begin collecting currency
+
+    - New SHOP command to allow members to spend their currency
+
+    - New TRADE command to allow members to trade with each other
+
+    - New OPEN command to allow a member to open a spawned chest
+        - Chests will contain currency and rarely contain items
+
+    - New INV command to display your items
+
+    - New USE command to use special items in your inventory
+
+- New ANNOUNCEMENT command for Warband Leaders and Mystic Officers
+    - Used for setting a message to go at a specific time on a day in the week
+
+- Timers have been reactivated
+
+CHANGES
+- Timers will now only display one event message at a time
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
 ##Version 1.2.0 - New Commands Added and Bug Fixes## 11/22/2022
 
 NEW

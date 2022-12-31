@@ -1,15 +1,19 @@
- - Make timers more dynamic
- - Add announcement command for shadow war and warband leaders
- - Work on currency update
-   - Make start command
-   - Make shop command
-   - Make use command
-   - Make a shop to use currency in
-   - Add currency for people talking
-   - Find items that can be used
-   - Make trade command
-   - Add admin commands
-     - Add command to add or remove currency from users
-     - Add command to give and take items to/from users
-     - Add command to add or remove players from the event
-     - Add command to lock and unlock shop
+- Make timers more dynamic
+  - Delete old timer message before announcing new timer
+- Add announcement command for shadow war and warband leaders
+- Work on currency update
+  - Make start command
+  - Make shop command
+    - Make buy command
+    - Make sell command
+  - Make use command
+  - Make a shop to use currency in
+  - Add currency for people talking
+  - Find items that can be used
+  - Make trade command
+  - Add admin commands
+    - Add command to add or remove currency from users
+    - Add command to give and take items to/from users
+    - Add command to add or remove players from the event
+    - Add command to lock and unlock shop
+- Fix help command to work with new directory structure

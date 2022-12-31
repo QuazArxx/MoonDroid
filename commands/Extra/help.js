@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js')
 
-const data = require('../Data.json')
+const data = require('../../Data.json')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -12,7 +12,12 @@ module.exports = {
         const commands = client.commands
         const commandCategories = [    
             {    
-                commandCategory: "Main",
+                commandCategory: "General",
+                commandArray: []
+            },
+
+            {
+                commandCategory: "Currency",
                 commandArray: []
             },
 

@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
 
-const { quazId } = require('../Data.json')
+const { quazId } = require('../../Data.json')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('bug')
@@ -9,7 +9,7 @@ module.exports = {
             option.setName('report')
             .setDescription('What is the bug you are experiencing?')
             .setRequired(true)),
-    category: 'main',
+    category: 'general',
     officerCommand: false,
     async execute(interaction, client) {
         const bugReport = interaction.options.getString('report')
