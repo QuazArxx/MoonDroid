@@ -4,7 +4,7 @@ const { token } = require('./config.json');
 const fs = require('node:fs');
 
 const data = require('./Data.json');
-const { sequelize } = require('./Database/server');
+//const { sequelize } = require('./Database/server');
 
 // Sets Discord IntentsBitField
 const discordIntents = new IntentsBitField()
@@ -155,4 +155,4 @@ client.on('interactionCreate', async interaction => {
 })
 
 client.login(token);
-sequelize.authenticate()
+//sequelize.authenticate()
