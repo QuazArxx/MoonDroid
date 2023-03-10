@@ -20,7 +20,7 @@ const demonGateEmbed = new EmbedBuilder()
 .setColor('#992D22')
 .setTitle(`Demon Gates in Realm of Damnation starts in 5 minutes!`)
 
-let demonGates1 = new CronJob("0 55 11,21 * * 0,1,4", 
+let demonGates1 = new CronJob("0 55 11,21 * * 1", 
     function() {
         client.channels.cache.get(data.diabloNewsChannel).send(`<@&${data.diabloNotifRole}>`)
         client.channels.cache.get(data.diabloNewsChannel).send({embeds: [demonGateEmbed]})
@@ -30,7 +30,7 @@ let demonGates1 = new CronJob("0 55 11,21 * * 0,1,4",
     'America/New_York'
 )
 
-let demonGates2 = new CronJob("0 25 20 * * 0,1,4", 
+let demonGates2 = new CronJob("0 25 20 * * 1", 
     function() {
         client.channels.cache.get(data.diabloNewsChannel).send(`<@&${data.diabloNotifRole}>`)
         client.channels.cache.get(data.diabloNewsChannel).send({embeds: [demonGateEmbed]})
@@ -98,6 +98,56 @@ let assemblyEvent = new CronJob('0 55 17 * * 1-6',
     function() {
         client.channels.cache.get(data.diabloNewsChannel).send(`<@&${data.diabloNotifRole}>`)
         client.channels.cache.get(data.diabloNewsChannel).send({embeds: [assemblyEmbed]})
+    },
+    null,
+    true,
+    'America/New_York'
+)
+
+// Announces Onslaught time on designated days
+const onslaughtEmbed = new EmbedBuilder()
+.setColor('#992D22')
+.setTitle('Stormpoint is going to be attacked in 5 minutes!')
+
+let onslaught1 = new CronJob("0 55 11,21 * * 0,4",
+    function() {
+        client.channels.cache.get(data.diabloNewsChannel).send(`<@&${data.diabloNotifRole}>`)
+        client.channels.cache.get(data.diabloNewsChannel).send({embeds: [onslaughtEmbed]})
+    },
+    null,
+    true,
+    'America/New_York'
+)
+
+let onslaught2 = new CronJob("0 25 20 * * 0,4", 
+    function() {
+        client.channels.cache.get(data.diabloNewsChannel).send(`<@&${data.diabloNotifRole}>`)
+        client.channels.cache.get(data.diabloNewsChannel).send({embeds: [onslaughtEmbed]})
+    },
+    null,
+    true,
+    'America/New_York'
+)
+
+// Announces Wrathborne Invasion time on designated days
+const wrathborneEmbed = new EmbedBuilder()
+.setColor('#922D22')
+.setTitle('Get ready! A Wrathborne demon is going to invade a random zone in 5 minutes!')
+
+let wrathborne1 = new CronJob("0 55 20 * * *",
+    function() {
+        client.channels.cache.get(data.diabloNewsChannel).send(`<@&${data.diabloNotifRole}>`)
+        client.channels.cache.get(data.diabloNewsChannel).send({embeds: [wrathborneEmbed]})
+    },
+    null,
+    true,
+    'America/New_York'
+)
+
+let wrathborne2 = new CronJob("0 25 12 * * *",
+    function() {
+        client.channels.cache.get(data.diabloNewsChannel).send(`<@&${data.diabloNotifRole}>`)
+        client.channels.cache.get(data.diabloNewsChannel).send({embeds: [wrathborneEmbed]})
     },
     null,
     true,
