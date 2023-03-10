@@ -19,10 +19,7 @@ module.exports = {
             .setTitle('__Ancient Arena Schedule__')
             .addFields(
                 {name: '\u200B', value: '\u200B'},
-                {name: 'Sunday', value: '9:30pm Server Time'},
-                {name: 'Tuesday', value: '9:30pm Server Time'},
-                {name: 'Thursday', value: '9:30pm Server Time'},
-                {name: 'Saturday', value: '9:30pm Server Time'}
+                {name: 'Sunday, Tuesday, Thursday, Saturday:', value: '9:30pm Server Time'}
             )
             return await interaction.reply({ephemeral: true, embeds: [embedded]})
         }
@@ -32,17 +29,18 @@ module.exports = {
         .setTitle('__DAILY EVENTS__')
         .addFields(
             {name: '\u200B', value: '\u200B'},
-            {name: 'Sunday: ', value: 'Demon Gates in Realm of Damnation'},
+            {name: 'Sunday: ', value: 'Onslaught in Stormpoint Keep'},
             {name: 'Monday:', value: 'Demon Gates in Realm of Damnation'},
             {name: 'Tuesday:', value: 'Haunted Carriage in Ashworld Cemetery'},
             {name: 'Wednesday:', value: 'Ancient Nightmare in Mount Zavain'},
-            {name: 'Thursday:', value: 'Demon Gates in Realm of Damnation'},
+            {name: 'Thursday:', value: 'Onslaught in Stormpoint Keep'},
             {name: 'Friday:', value: 'Ancient Nightmare in Mount Zavain'},
             {name: 'Saturday:', value: 'Haunted Carriage in Ashworld Cemetery'},
-            {name: '\u200B', value: '\u200B'}
+            {name: '\u200B', value: '\u200B'},
+            {name: 'Wrathborne Invasion is every day 12:30pm and 9pm', value: '\u200B'}
         )
-        .setFooter({text: 'All event times are 12pm, 8:30pm and 10pm Server Time'})
+        .setFooter({text: 'Daily event times are 12pm, 8:30pm, and 10pm Server Time'})
 
-        await interaction.reply({ephemeral: true, embeds: [embed]})
+        await interaction.reply({ ephemeral: true, embeds: [embed] })
     }
 }
