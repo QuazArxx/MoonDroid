@@ -10,10 +10,6 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    userDisplayName: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
     userCurrencyAmount: {
         type: DataTypes.INTEGER,
         allowNull: false,

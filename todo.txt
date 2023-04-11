@@ -16,4 +16,4 @@
     - Add command to give and take items to/from users
     - Add command to add or remove players from the event
     - Add command to lock and unlock shop
-- Fix help command to work with new directory structure
+- Fix help command to work with new directory structure✅

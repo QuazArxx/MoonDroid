@@ -9,7 +9,7 @@ module.exports = {
     category: 'extra',
     officerCommand: false,
     async execute(interaction, client) {
-        const commands = client.commands
+        let commands = client.commands
         const commandCategories = [    
             {    
                 commandCategory: "General",
@@ -34,14 +34,21 @@ module.exports = {
             {
                 commandCategory: "Testing",
                 commandArray: []
+            },
+
+            {
+                commandCategory: "Extra",
+                commandArray: []
             }
         ]
 
-        commands.sweep(command => command.category === 'extra')
+        if (!(interaction.member.roles.cache.has(data.botManagerRole))) {
+            commands.filter(command => command.category === 'extra')
+        }
 
-        if (!(interaction.member.roles.cache.has(data.diabloOfficerRole))) {
-            commands.sweep(command => command.category === 'admin')
-            commands.sweep(command => command.category === 'testing')
+        if (!(interaction.member.roles.cache.has(data.diabloOfficerRole)) || !(interaction.member.roles.cache.has(data.botManagerRole))) {
+            commands.filter(command => command.category === 'admin')
+            commands.filter(command => command.category === 'testing')
         }
 
         for (let x = 0; x < commandCategories.length; x++) {
@@ -65,7 +72,7 @@ module.exports = {
 
             commandsList += `\n`
         }
-
-        interaction.reply({ content: commandsList, ephemeral: true })
+        
+        await interaction.reply({ content: commandsList, ephemeral: true })
     }
 }

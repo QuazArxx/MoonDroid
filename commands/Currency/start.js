@@ -6,13 +6,16 @@ module.exports = {
         .setName('start')
         .setDescription('Allows you to earn currency for talking.'),
     category: 'currency',
+    officerCommand: false,
     async execute(interaction, client) {
-        let idCheck = User.findOne({ where: { userId: interaction.user.id }})
+        let idCheck = await User.findOne({ where: { userId: interaction.user.id }})
+
+        console.log(idCheck)
+
         if (!(idCheck == null)) {
             return interaction.reply('You have already been added.')
         }
 
-        let member = interaction.guild.members.cache.get(interaction.user.id)
         let memberName = interaction.user.username
 
         try {
@@ -20,11 +23,11 @@ module.exports = {
                 return User.create({
                     userId: interaction.user.id,
                     userName: memberName,
-                    userDisplayName: member.displayName
+                    userCurrencyAmount: 0
                 })
             })
 
-            interaction.reply('Added to database')
+            await interaction.reply('Added to database')
         } catch (error) {
             console.error(error)
         }

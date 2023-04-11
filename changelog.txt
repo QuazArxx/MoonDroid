@@ -18,8 +18,6 @@ NEW
 - New ANNOUNCEMENT command for Warband Leaders and Mystic Officers
     - Used for setting a message to go at a specific time on a day in the week
 
-- Timers have been reactivated
-
 CHANGES
 - Timers will now only display one event message at a time
 
