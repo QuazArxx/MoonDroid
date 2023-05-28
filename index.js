@@ -206,31 +206,6 @@ client.on('guildMemberAdd', async member => {
 })*/
 
 client.on('interactionCreate', async interaction => {
-    if (!interaction.isChatInputCommand || !interaction.isButton) return
-
-    const command = interaction.client.commands.get(interaction.commandName)
-    
-    if (!command) return;
-
-    if (command.data.officerCommand == true && !interaction.user.roles.cache.has(data.diabloOfficerRole)) return
-
-    try {
-	    await command.execute(interaction, client)
-    }  
-    catch (error) {
-	    console.error(error);
-	    await interaction.reply({ content: 'Something went wrong! Don\'t worry though, Quaz has been notified.', ephemeral: true })
-
-        const embed = new EmbedBuilder()
-        .setColor('Red')
-        .setTitle('Command Error')
-        .addFields(
-            {name: `${interaction.user.username} tried to use "${interaction}" but it failed.`, value: `${error}`}
-        )
-        await client.users.send(data.quazId, { embeds: [embed] })
-    }
-
-
     switch (interaction.customId) {
         case 'diabloImmortalIn':
             await interaction.deferUpdate()
@@ -312,7 +287,33 @@ client.on('interactionCreate', async interaction => {
                 await interaction.guild.members.cache.get(interaction.user.id).roles.remove(data.dreamersRole)
             }
         default:
-            return  
+            return
+        }
+})
+
+client.on('interactionCreate', async interaction => {
+    if (!interaction.isChatInputCommand || !interaction.isButton) return
+
+    const command = interaction.client.commands.get(interaction.commandName)
+    
+    if (!command) return;
+
+    if (command.data.officerCommand == true && !interaction.user.roles.cache.has(data.diabloOfficerRole)) return
+
+    try {
+	    await command.execute(interaction, client)
+    }  
+    catch (error) {
+	    console.error(error);
+	    await interaction.reply({ content: 'Something went wrong! Don\'t worry though, Quaz has been notified.', ephemeral: true })
+
+        const embed = new EmbedBuilder()
+        .setColor('Red')
+        .setTitle('Command Error')
+        .addFields(
+            {name: `${interaction.user.username} tried to use "${interaction}" but it failed.`, value: `${error}`}
+        )
+        await client.users.send(data.quazId, { embeds: [embed] })
     }
 })
 
