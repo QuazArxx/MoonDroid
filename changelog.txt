@@ -22,6 +22,13 @@ CHANGES
 - Timers will now only display one event message at a time
 
 ------------------------------------------------------------------------------------------------------------------------------------------
+##Version 1.2.1 - Adjustments to Announcement Notifications
+
+CHANGES
+- Announcements for events have changed. Tagged roles are different instead of being generalized.
+  Area event notifications have been removed. Reminders for Shadow War have been added.
+
+------------------------------------------------------------------------------------------------------------------------------------------
 
 ##Version 1.2.0 - New Commands Added and Bug Fixes## 11/22/2022
 

@@ -1,10 +1,13 @@
 {
     "diabloOptChannel": "996243464473821214",
     "diabloNewsChannel": "995032058479001620",
+    "ShadowTingsChannel": "995031309636358154",
+    "WorldChatChannel": "995031408236052480",
+    "ClanChatChannel": "1065439856773300234",
 
     "diabloSpyRole": "1005551217453314059",
     "diabloOfficerRole": "995039357025124452",
-    "diabloNotifRole": "995076047647277157",
+    "diabloClanRole": "982322327519887400",
     "diabloImmortalRole": "982322327519887400",
     "barbarianRole": "1000928981438189668",
     "crusaderRole": "1000928551652053103",
