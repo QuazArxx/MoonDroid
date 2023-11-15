@@ -28,7 +28,7 @@ const assemblyEmbed = new EmbedBuilder()
 .setColor('#992D22')
 .setTitle('The shadows are getting ready to assemble. Assembly starts in 5 minutes!')
 
-let assemblyEvent = new CronJob('0 55 17 * * 1-6',
+let assemblyEvent = new CronJob('0 55 18 * * 1-6',
     function() {
         client.channels.cache.get(data.ClanChatChannel).send({embeds: [assemblyEmbed]})
     },
