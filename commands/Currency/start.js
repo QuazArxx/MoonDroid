@@ -1,5 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js')
-const { User } = require('../../Database/Models/User')
+const fs = require('node:fs')
+
+const user = require('../../users.json')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -8,28 +10,12 @@ module.exports = {
     category: 'currency',
     officerCommand: false,
     async execute(interaction, client) {
-        let idCheck = await User.findOne({ where: { userId: interaction.user.id }})
+        const member = interaction.user
 
-        console.log(idCheck)
-
-        if (!(idCheck == null)) {
-            return interaction.reply('You have already been added.')
-        }
-
-        let memberName = interaction.user.username
-
-        try {
-            User.sync({ alter: true }).then(() => {
-                return User.create({
-                    userId: interaction.user.id,
-                    userName: memberName,
-                    userCurrencyAmount: 0
-                })
-            })
-
-            await interaction.reply('Added to database')
-        } catch (error) {
-            console.error(error)
-        }
+        user.push({
+            userId: member.id,
+            userName: member.displayName,
+            userCurrencyAmount: 0
+        })
     }
 }

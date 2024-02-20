@@ -4,8 +4,6 @@ const { token } = require('./config.json');
 const fs = require('node:fs');
 
 const data = require('./Data.json');
-//const { sequelize } = require('./Database/server');
-//const { User } = require('./Database/Models/User');
 
 const CronJob = require('cron').CronJob
 
@@ -30,7 +28,7 @@ const assemblyEmbed = new EmbedBuilder()
 
 let assemblyEvent = new CronJob('0 55 18 * * 1-6',
     function() {
-        client.channels.cache.get(data.ClanChatChannel).send({embeds: [assemblyEmbed]})
+        client.channels.cache.get(data.ShadowTingsChannel).send({embeds: [assemblyEmbed]})
     },
     null,
     true,
@@ -80,15 +78,7 @@ for (const folder of commandsFolders) {
 	}
 }
 
-client.once('ready', () => console.log('Ready!'));
-
-client.on('guildMemberAdd', async member => {
-    member.roles.add('378271467969970176')
-
-    // Check if new member is a bot
-    // if not a bot, check if in database
-        // add member to database if not in
-})
+client.once('ready', () => client.channels.cache.get(data.ClanChatChannel).send(`*I'm alive!*`));
 
 /*client.on('messageCreate', async message => {
     // Check if speaker is in the database or a bot
@@ -211,9 +201,8 @@ client.on('interactionCreate', async interaction => {
 })
 
 client.login(token);
-/*sequelize.authenticate()
 
-async function GiveCurrency(message) {
+/*async function GiveCurrency(message) {
     // give a certain amount of currency to whoever spoke.
         // RNG an amount and add to database
     let randomAmount = Math.floor(Math.random() * 10)
